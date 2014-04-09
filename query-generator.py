@@ -36,7 +36,7 @@ def main():
     for i in range(4):
         tmpF = random.choice(Fname)
         tmpL = random.choice(Lname)
-        query += "('" + id_gen(8) "', '" + tmpF + "', '" + tmpL + "', '" + str(0) + "', '" + tmpF + str(i) + "'),\n"
+        query += "('" + id_gen(8) + "', '" + tmpF + "', '" + tmpL + "', " + str(0) + ", '" + tmpF + str(i) + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
