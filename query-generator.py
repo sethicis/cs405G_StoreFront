@@ -42,4 +42,13 @@ def main():
     query = "".join(s)
     print query
 
+    query = "INSERT INTO Items\nVALUES\n"
+        val = random.randrange(100) + 1
+        print str(val)
+        query += "('wingding" + str(i) + "', " + str(random.randrange(1000)/12) + ", " + ", " + str(val) + ", '" + id_gen(random.randrange(230)) + "'),\n"
+    s = list(query)
+    s[len(s)-2] = ";"
+    query = "".join(s)
+    print query
+
 main()
