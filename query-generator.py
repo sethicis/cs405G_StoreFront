@@ -43,8 +43,9 @@ def main():
     print query
 
     query = "INSERT INTO Items\nVALUES\n"
-        val = random.randrange(100) + 1
-        print str(val)
+    val = random.randrange(100) + 1
+    print str(val)
+    for i in range(15):
         query += "('wingding" + str(i) + "', " + str(random.randrange(1000)/12) + ", " + ", " + str(val) + ", '" + id_gen(random.randrange(230)) + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
