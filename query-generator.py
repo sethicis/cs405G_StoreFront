@@ -27,6 +27,8 @@ def main():
         tmpF = random.choice(customerFname)
         tmpL = random.choice(customerLname)
         query += "c" + str(i) + email + ", " + randStreet() + ", " + randState() + ", " + randZip() + ", " + tmpF + str(i) + ", " + tmpF + ", " + tmpL + ",\n"
-    query[len(query)-3] = ";"
+    s = list(query)
+    s[len(s)-3] = ";"
+    query = "".join(s)
     print query
 main()
