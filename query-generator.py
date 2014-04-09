@@ -63,7 +63,7 @@ def main():
 #insert Items for sale with promotional rate
     query = "INSERT INTO Items\nVALUES\n"
     for i in range(4):
-        query += "('wingding" + str(i+8) + "', " + str(float(random.randrange(1000)/13)) + ", " + str(random) + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(40)) + "'),\n"
+        query += "('wingding" + str(i+8) + "', " + str(float(random.randrange(1000)/13)) + ", " + str(round(random.random(),3)) + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(40)) + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
