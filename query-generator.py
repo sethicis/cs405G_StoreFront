@@ -28,3 +28,4 @@ def main():
         tmpL = random.choice(customerLname)
         query += "c" + str(i) + email + ", " + randStreet() + ", " + randState() + ", " + randZip() + ", " + tmpF + str(i) + ", " + tmpF + ", " + tmpL + ",\n"
     print query + ";"
+main()
