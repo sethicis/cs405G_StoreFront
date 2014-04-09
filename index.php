@@ -4,9 +4,7 @@
 <link rel="stylesheet" type="text/css" href="index.css">
 <title>Kyle Wares Store Front!</title>
 <?php
-ini_set(‘error_log’, ‘/mounts/u-zon-d2/ugrad/jkbl225/HTML/cs405g/script_errors.log’);
-ini_set(‘log_errors’, ‘On’);
-ini_set('display_errors', 'Off');
+error_log("Test message",3,"/mounts/u-zon-d2/ugrad/jkbl225/HTML/cs405-store/script_errors.log");
 error_reporting(E_ALL);
 ?>
 </head>

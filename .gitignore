@@ -1,2 +1,3 @@
 #exclude log files
 *.log
+/netbeans-metadata/nbproject/private/
