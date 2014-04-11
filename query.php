@@ -95,7 +95,7 @@ function isManager($id){
     }
 }
 
-function search_item($name){
+function get_item($name){
     $connection = make_connection();
     $name = mysqli_escape_string($connection, $name);
     

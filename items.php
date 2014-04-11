@@ -6,6 +6,14 @@
  * and open the template in the editor.
  */
 
+function promoValue($item){
+   $price = $item['price'] - ($item['price'] * $item['promotion']);
+   echo "<td><del style='color:red'>$" . strval($item['price']) . 
+           "</del>&nbsp $" . $price . "</td>"; /*. "<td><font style='color:green'>" . 
+           strval(($item['promotion']*100)) . "% off!</font></td>";*/
+   return;
+}
+
 function displayItems($items){
     echo "<table>"
     . "<tr>"
@@ -15,8 +23,10 @@ function displayItems($items){
         echo "<tr>"
         . "<td>" . $item['name'] . "</td>";
         if (($item['promotion']) > 0){
-            $price = $item['price'] - ($item['price'] * $item['promotion']);
-            echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>" . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
+            promoValue($item);
+            //$price = $item['price'] - ($item['price'] * $item['promotion']);
+            //echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>" . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
+            echo "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
         }
         else{
             echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
@@ -25,4 +35,23 @@ function displayItems($items){
              . "</tr>";
     }
     echo "</table>";
+}
+
+function displayItemDetails($item){
+    $item = mysqli_fetch_array($item);
+    echo "<table>"
+        . "<tr>"
+            . "<th colspan='2'><h3>" . $item['name'] . "</h3></th>"
+            . "</tr>"
+            . "<tr>"
+            . "<td>Price:</td>"; if ($item['promotion'] > 0) {
+                                        promoValue($item);
+                                        echo "</tr>"
+                                        . "<tr><td>Sale:</td><td><font style='color:green'>" 
+                                                . strval(($item['promotion']*100)) . "% off!</font></td></tr>";}
+                                 else{
+                                     echo "<td>" . strval($item['price']) . "</td></tr>";
+                                 }
+            echo "<tr><td>Description:</td><td>" . $item['description'] . "</td></tr>";
+            echo "<tr><td>ISN:</td><td>" . $item['isn'] . "</td></tr>";
 }

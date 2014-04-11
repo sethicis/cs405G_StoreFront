@@ -17,7 +17,7 @@ function parsePOST($str='test'){
 function searchBox(){
     echo"
 	<div id='container' class='searchDiv'>
-            <form action='index.php' method='POST'>
+            <form action='search_handle.php' method='POST'>
                 <table border=1>
 		<tr>
                     <td colspan='2' align='center'><h1>Search The Store</h1></td>
