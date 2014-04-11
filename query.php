@@ -5,9 +5,20 @@
  * and open the template in the editor.
  */
 function make_connection() {
+    //Get info from ini file for server connection
     $info = parse_ini_file('database.ini');
     
-    return mysql_connect($info['host'],$info['username'],$info['password'],$info['database'],$info['port']);
+    //Populate variables for mysql connection
+    $host = $info['host'];
+    $username = $info['username'];
+    $password = $info['password'];
+    $db = $info['database'];
+    $port = $info['port'];
+    
+    //Return connection
+    $result = mysql_connect($host,$username,$password,$db,$port);
+    echo "Contents of result: " . $result;
+    return $result;
 }
 
 function log_query($sql){
