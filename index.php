@@ -8,14 +8,13 @@
 &nbsp
 
 <?php
-    if(!parsePOST()){
+    if(!parsePOST('term')){
         navigation();
         searchBox();
     }else{
         navigation();
         displayItems(search_item($_POST['term']));
     }
-      
 ?>
 &nbsp
 &nbsp
