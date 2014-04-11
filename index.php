@@ -2,6 +2,7 @@
     include 'header.php';
     include 'operations.php';
     include 'items.php';
+    include 'query.php';
     head('Welcome Page');
 ?>
 <body>
