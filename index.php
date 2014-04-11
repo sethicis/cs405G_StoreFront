@@ -15,10 +15,12 @@
     }
     else if (parsePOST('term')){
         navigation();
+	echo "term case!";
         displayItems(search_item($_POST['term']));
     }
     else if (parsePOST('browse')){
         navigation();
+	echo "browse case!";
         displayItems(get_all_items());
     }
 ?>
