@@ -102,7 +102,7 @@ function search_item($name){
     $item_query = "SELECT * FROM Items WHERE name = '$name';";
     $result = send_query($connection, $item_query);
     if (mysqli_num_rows($result) > 0){
-        echo "success";
+        echo $result;
         return mysqli_fetch_assoc($result);
     }else{
         return NULL;
