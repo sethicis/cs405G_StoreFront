@@ -28,7 +28,7 @@ function log_query($sql){
     //Dump the query to log file for analysis
     //Dump location is not standard error file since
     //that location is not accessable on the multilab.
-    echo $sql;
+    //echo $sql;
     error_log($sql, 3, "/mounts/u-zon-d2/ugrad/jkbl225/HTML/cs405-store/script_errors.log");
 }
  
@@ -102,6 +102,7 @@ function search_item($name){
     $item_query = "SELECT * FROM Items WHERE name = '$name';";
     $result = send_query($connection, $item_query);
     if (mysqli_num_rows($result) > 0){
+        echo "success";
         return mysqli_fetch_assoc($result);
     }else{
         return NULL;
