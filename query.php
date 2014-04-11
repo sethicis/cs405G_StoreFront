@@ -14,6 +14,7 @@ function log_query($sql){
     //Dump the query to log file for analysis
     //Dump location is not standard error file since
     //that location is not accessable on the multilab.
+    echo $sql;
     error_log($sql, 3, "/mounts/u-zon-d2/ugrad/jkbl225/HTML/cs405-store/script_errors.log");
 }
  
@@ -21,6 +22,8 @@ function send_query($connection,$sql){
     if($connection){
         log_query($sql);
         return mysqli_query($connection,$sql);
+    }else{
+        echo "ERROR!!!";
     }
 }
 
