@@ -5,13 +5,9 @@
  * and open the template in the editor.
  */
 function make_connection() {
-    $username = "jkbl225";
-    $password = "vinewar8";
-    $database = "jkbl225";
-    $host = "mysql";
-    $port = "3306";
+    $info = parse_ini_file('database.ini');
     
-    return mysql_connect($host,$username,$password,$database,$port);
+    return mysql_connect($info['host'],$info['username'],$info['password'],$info['database'],$info['port']);
 }
 
 function log_query($sql){

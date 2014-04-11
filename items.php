@@ -9,25 +9,20 @@
 function displayItems($items){
     echo "<table>"
     . "<tr>"
-            . "<th>Name</th>"
-            . "<th>Price</th>"
-            . "<th>Promotion</th>"
-            . "<th>ISN</th>"
-            . "</tr>";
+      . "<th>Name</th>" . "<th>Price</th>" . "<th>Promotion</th>" . "<th>ISN</th>"
+    . "</tr>";
     while ($item = mysqli_fetch_array($items)){
         echo "<tr>"
         . "<td>" . $item['name'] . "</td>";
         if (($item['promotion']) > 0){
             $price = $item['price'] - ($item['price'] * $item['promotion']);
-            echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>"
-                    . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
+            echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>" . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
         }
         else{
-            echo "<td>$" . strval($item['price']) . "</td>"
-                    . "<td></td>"; //No promotion
+            echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
         }
         echo "<td>" . $item['isn'] . "</td>"
-                . "</tr>";
+             . "</tr>";
     }
     echo "</table>";
 }
