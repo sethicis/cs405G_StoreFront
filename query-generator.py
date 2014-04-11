@@ -20,17 +20,18 @@ def randStreet():
 def main():
     Fname = ['bob','steve','sally','johns','michael']
     Lname = ['johnson','lilly','grey','upper','downs']
+    city = ['Lexington','Louisville','New York','Paris']
     email = '@stuff.com'
 #insert Customers
     query = "INSERT INTO Customers\nVALUES\n"
     for i in range(6):
         tmpF = random.choice(Fname)
         tmpL = random.choice(Lname)
-        query += "('c" + str(i) + email + "', '" + randStreet() + "', '" + randState() + "', '" + randZip() + "', '" + tmpF + str(i) + "', '" + tmpF + "', '" + tmpL + "'),\n"
+        query += "('c" + str(i) + email + "', '" + randStreet() + "', '" + random.choice(city) + "', '" + randState() + "', '" + randZip() + "', '" + tmpF + str(i) + "', '" + tmpF + "', '" + tmpL + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
-    print query
+    #print query
 #insert staff
     query = "INSERT INTO Staff\nVALUES\n"
     for i in range(4):
@@ -40,7 +41,7 @@ def main():
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
-    print query
+    #print query
     #insert managers
     query = "INSERT INTO Staff\nVALUES\n"
     for i in range(2):
@@ -50,11 +51,11 @@ def main():
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
-    print query
+    #print query
 #insert Items for sale with no promotion
     query = "INSERT INTO Items\nVALUES\n"
     for i in range(8):
-        query += "('wingding" + str(i) + "', " + str(random.randrange(1000)/12) + ", " + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(40)) + "'),\n"
+        query += "('wingding" + str(i) + "', " + str(random.randrange(1000)/12) + ", 0" + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(30)) + "', '" + id_gen(6) + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
@@ -63,7 +64,7 @@ def main():
 #insert Items for sale with promotional rate
     query = "INSERT INTO Items\nVALUES\n"
     for i in range(4):
-        query += "('wingding" + str(i+8) + "', " + str(float(random.randrange(1000)/13)) + ", " + str(round(random.random(),3)) + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(40)) + "'),\n"
+        query += "('wingding" + str(i+8) + "', " + str(float(random.randrange(1000)/13)) + ", " + str(round(random.random(),3)) + ", " + str(random.randrange(100)+1) + ", '" + id_gen(random.randrange(40)) + "', '" + id_gen(6) + "'),\n"
     s = list(query)
     s[len(s)-2] = ";"
     query = "".join(s)
