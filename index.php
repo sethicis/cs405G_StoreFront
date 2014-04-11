@@ -8,7 +8,7 @@
 &nbsp
 
 <?php
-    if(!parsePOST()){
+    if(!parsePOST('term')){
         navigation();
         searchBox();
     }else{
