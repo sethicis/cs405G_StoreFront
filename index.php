@@ -1,15 +1,13 @@
 <?php
-    include 'header.php';
+    include_once 'header.php';
     include 'operations.php';
-    header('Welcome Page');
+    head('Welcome Page');
 ?>
 <body>
 &nbsp
-navigation();
 
-&nbsp
 <?php
-      
+      navigation();
       searchBox();
 ?>
 &nbsp
