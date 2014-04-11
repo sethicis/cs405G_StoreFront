@@ -12,9 +12,14 @@
     if(!parsePOST('term')){
         navigation();
         searchBox();
-    }else{
+    }
+    else if (parsePOST('term')){
         navigation();
         displayItems(search_item($_POST['term']));
+    }
+    else if (parsePOST('browse')){
+        navigation();
+        displayItems(get_all_items());
     }
 ?>
 &nbsp
