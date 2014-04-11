@@ -16,7 +16,7 @@ function make_connection() {
     $port = $info['port'];
     
     //Return connection
-    $result = mysql_connect($host,$username,$password,$db,$port);
+    $result = mysqli_connect($host,$username,$password,$db,$port);
     if (mysqli_connect_errno())
     {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -36,8 +36,6 @@ function send_query($connection,$sql){
     if($connection){
         log_query($sql);
         return mysqli_query($connection,$sql);
-    }else{
-        echo "ERROR!!!";
     }
 }
 
