@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-function header($title){
+function head($title){
     echo '
     <!DOCTYPE html>
     <html lang="en">
@@ -21,5 +21,6 @@ function header($title){
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>';
     error_reporting(E_ALL);
+    return;
 }
 

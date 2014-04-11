@@ -1,16 +1,21 @@
 <?php
     include 'header.php';
     include 'operations.php';
-    header('Welcome Page');
+    include 'items.php';
+    head('Welcome Page');
 ?>
 <body>
 &nbsp
-navigation();
 
-&nbsp
 <?php
+    if(!parsePOST()){
+        navigation();
+        searchBox();
+    }else{
+        navigation();
+        displayItems(search_item($_POST['term']));
+    }
       
-      searchBox();
 ?>
 &nbsp
 &nbsp
