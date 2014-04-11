@@ -17,7 +17,10 @@ function make_connection() {
     
     //Return connection
     $result = mysql_connect($host,$username,$password,$db,$port);
-    echo "Contents of result: " . $result;
+    if (mysqli_connect_errno())
+    {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
     return $result;
 }
 
