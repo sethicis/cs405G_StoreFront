@@ -3,6 +3,7 @@
 include 'header.php';
 include 'items.php';
 include 'operations.php';
+include 'query.php';
 
 /* 
  * To change this license header, choose License Headers in Project Properties.
