@@ -18,8 +18,8 @@ function searchBox(){
                     <td colspan='2' align='center'><input style='font-size:25px' size='30' type='text' name='term'></td>
 		</tr>
 		<tr>
-                    <td align='center'><input type='submit' style='font-size:35px'></td>
-                    <td align='center'><input type='button' name='browse' style='font-size:30px' value='Browse Store Items'></td>
+                    <td align='center'><button type='submit' name='search' value='search' style='font-size:35px'>Submit</button></td>
+                    <td align='center'><button type='submit' name='browse' style='font-size:30px' value='Browse Store Items'>Browse</button></td>
 		</tr>
 		</table>
             </form>
