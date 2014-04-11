@@ -5,6 +5,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function parsePOST($str='test'){
+    if(!empty($_POST)){
+        if (isset($_POST[$str]) ){
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 function searchBox(){
     echo"
@@ -15,7 +23,7 @@ function searchBox(){
                     <td colspan='2' align='center'><h1>Search The Store</h1></td>
 		</tr>
 		<tr>
-                    <td colspan='2' align='center'><input style='font-size:25px' size='30' type='text' name='term'></td>
+                    <td colspan='2' align='center'><input style='font-size:20px' size='30' type='text' name='term'></td>
 		</tr>
 		<tr>
                     <td align='center'><button type='submit' name='search' value='search' style='font-size:24px'>Submit</button></td>
