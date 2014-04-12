@@ -7,6 +7,7 @@
  */
 
 include 'cart.php';
+include 'users.php';
 
 //Unused function. May be removed
 function parsePOST($str='test'){

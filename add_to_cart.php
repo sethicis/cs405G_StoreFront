@@ -1,7 +1,7 @@
 <?php
 
 include 'cart.php';
-include 'query.php';
+include_once 'query.php';
 
 /* 
  * To change this license header, choose License Headers in Project Properties.

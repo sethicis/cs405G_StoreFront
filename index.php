@@ -1,8 +1,8 @@
 <?php
-    include 'header.php';
-    include 'operations.php';
-    include 'items.php';
-    include 'query.php';
+    include_once 'header.php';
+    include_once 'operations.php';
+    include_once 'items.php';
+    //include 'query.php';
     head('Welcome Page');
 ?>
 <body>

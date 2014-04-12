@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-include 'query.php';
+include_once 'query.php';
 
 session_start();
 
