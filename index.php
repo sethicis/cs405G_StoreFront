@@ -9,7 +9,9 @@
 &nbsp
 
 <?php
-    if(!parsePOST('term')){
+    $isn = '23kk2';
+    header("Location: 'item.php?isn=" . $isn . "&error=qty'");
+    /*if(!parsePOST('term')){
         navigation();
         searchBox();
     }
@@ -22,7 +24,7 @@
         navigation();
 	echo "browse case!";
         displayItems(get_all_items());
-    }
+    }*/
 ?>
 &nbsp
 &nbsp
