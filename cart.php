@@ -25,6 +25,16 @@ function add_to_cart($isn,$qty=1){
     save_cart($cart);
 }
 
+//Get the quantity of items by a certain isn
+//currently in the cart.
+function get_item_from_cart($isn){
+    $cart = get_cart_items();
+    if (array_key_exists($isn, $cart)){
+        return $cart[$isn];
+    }
+    return 0;
+}
+
 //Used if a user decides to add more items to their cart or
 //remove items from their cart
 function update_cart($isn, $qty=1){

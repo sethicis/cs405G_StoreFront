@@ -96,7 +96,7 @@ function chk_mgt($id){
 }
 
 function chk_sufficient_quantity($isn,$amt){
-    return (get_item_quantity($isn) > $amt);
+    return ((get_item_quantity($isn) - get_item_from_cart($isn)) > $amt);
 }
 
 function get_item_quantity($isn){

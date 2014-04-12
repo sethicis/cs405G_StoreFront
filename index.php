@@ -12,8 +12,9 @@
 //searchBox was updated to redirect to a new location
 //so the extra logic in the index.php file may not be necessary anymore.
     if(!parsePOST('term')){
-        navigation();
+        include 'toolbar.php';
         searchBox();
+        include 'footer.php';
     }
     //May not be necessary anymore
     else if (parsePOST('term')){
