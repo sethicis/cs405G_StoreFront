@@ -40,7 +40,7 @@ function searchBox(){
 	";
 }
 
-function navigation(){
+/*function navigation(){
     
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -77,4 +77,4 @@ function navigation(){
     echo     '</tr>';
     echo '</table>';
 echo'</div>';*/
-}
+//}
