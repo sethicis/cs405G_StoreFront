@@ -28,7 +28,7 @@ function searchBox(){
                 </div>
             </div>
             <div class='row'>
-		<div class='col-lg-12 center-block'>
+		<div class='col-lg-12 text-center'>
                     <h1>
                         Widgets and Wingdings<br>
                         <small>The first and only of its kind</small>
@@ -41,11 +41,12 @@ function searchBox(){
                         content
                     </p>
                 </div>
+            </div>
             <div class='row'>
-                <div class='col-lg-12'>
+                <div class='col-lg-12 text-center'>
                     <form action='search_handle.php' method='POST' class='form-search'>
-                        <h3>Search The Store</h3>
-                        <input type='text' size='30' class='input-medium search-query' name='term' placeholder='Search for an Item'>		
+                        <h4>Item Search</h4>
+                        <input type='text' size='50' class='input-medium search-query' name='term' placeholder='Search for an Item'>		
                         <button type='submit' name='search' value='search' class='btn'>Submit</button>
                     </form>
                 </div>
