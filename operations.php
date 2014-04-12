@@ -28,9 +28,9 @@ function searchBox(){
                 </div>
             </div>
             <div class='row'>
-		<div class='col-lg-12'>
+		<div class='col-lg-12 center-block'>
                     <h1>
-                        Welcome to The Widgets and Wingdings Store<br>
+                        Widgets and Wingdings<br>
                         <small>The first and only of its kind</small>
                     </h1>
                 </div>
