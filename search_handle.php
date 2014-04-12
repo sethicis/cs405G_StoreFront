@@ -24,7 +24,6 @@ function search_type(){
         if ($item != NULL){
             header("Location: item.php?isn=" . $item['isn'] . "&error=0");
         }else{
-	echo "error!";
             //TODO: Handle search term with no hits
         }
     }
