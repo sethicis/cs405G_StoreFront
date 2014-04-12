@@ -21,6 +21,7 @@ function parsePOST($str='test'){
 
 function searchBox(){
     echo"
+        <div class=\"container-fluid\">
 	<div id='container' class='row'>
             <form action='search_handle.php' method='POST'>
                 <table border=1>
@@ -37,6 +38,7 @@ function searchBox(){
 		</table>
             </form>
 	</div>
+        </div>
 	";
 }
 
