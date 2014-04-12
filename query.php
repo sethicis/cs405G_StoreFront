@@ -95,6 +95,28 @@ function isManager($id){
     }
 }
 
+function chk_sufficient_quantity($isn,$amt){
+    return (get_item_quantity($isn) > $amt);
+}
+
+function get_item_quantity($isn){
+    $result = get_item_by_isn($isn);
+    $qty = $result['quantity'];
+    return $qty;
+}
+
+function get_item_by_isn($isn){
+    $connection = make_connection();
+    $isn = mysqli_escape_string($connection, $isn);
+    $item_query = "SELECT * FROM Items WHERE isn = '$isn';";
+    $result = send_query($connection, $item_query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return NULL;
+    }
+}
+
 function get_item($name){
     $connection = make_connection();
     $name = mysqli_escape_string($connection, $name);
