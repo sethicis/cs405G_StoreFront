@@ -12,19 +12,21 @@ include_once 'query.php';
  */
 
 function search_type(){
-    if (isset($_POST['search'])) DEBUGGING!!
+    if (isset($_POST['search']))
 	//if (TRUE)
     {
         //Search for term
-        //$term = $_POST['term']; //Get the name of the variable to search for
+        $term = $_POST['term']; //Get the name of the variable to search for
         //$term = 'wingding1';
 	//Feature, add support to search by not just name, but isn as well.
         //Get the details for a particular item
         //displayItemDetails(get_item($term));
-        $item = mysqli_fetch_array(get_item($term));
+        $item = get_item($term);
+	print_r($item);
         if ($item != NULL){
             header("Location: item.php?isn=" . $item['isn'] . "&error=0");
         }else{
+	echo "error!";
             //TODO: Handle search term with no hits
         }
     }

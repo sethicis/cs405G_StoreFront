@@ -111,7 +111,7 @@ function get_item_by_isn($isn){
     $item_query = "SELECT * FROM Items WHERE isn = '$isn';";
     $result = send_query($connection, $item_query);
     if (mysqli_num_rows($result) > 0){
-        return $result;
+        return mysqli_fetch_assoc($result);
     }else{
         return NULL;
     }
@@ -119,13 +119,15 @@ function get_item_by_isn($isn){
 
 function get_item($name){
     $connection = make_connection();
+	echo "searching : " . $name;
     $name = mysqli_escape_string($connection, $name);
     
-    $item_query = "SELECT * FROM Items WHERE name = '$name';";
+    $item_query = "SELECT * FROM Items WHERE name = '" . $name . "';";
     $result = send_query($connection, $item_query);
     if (mysqli_num_rows($result) > 0){
-        return $result;
+        return mysqli_fetch_assoc($result);
     }else{
+//	echo "returning null";
         return NULL;
     }
 }
