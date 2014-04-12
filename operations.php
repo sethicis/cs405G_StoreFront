@@ -22,26 +22,29 @@ function parsePOST($str='test'){
 function searchBox(){
     echo"
         <div class=\"container\">
-        <div class='row'>
-		<div class='col-lg-12'></div>
-	<div class='row'>
-	<div class='col-lg-12'>
-            <form action='search_handle.php' method='POST'>
-                <table class='table'>
-		<tr>
-                    <td colspan='2'><h1>Search The Store</h1></td>
-		</tr>
-		<tr>
-                    <td colspan='2'><input style='font-size:20px' size='30' type='text' name='term'></td>
-		</tr>
-		<tr>
-                    <td><button type='submit' name='search' value='search' style='font-size:24px'>Submit</button></td>
-                    <td><button type='submit' name='browse' style='font-size:24px' value='Browse Store Items'>Browse</button></td>
-		</tr>
-		</table>
-            </form>
-	</div>
-        </div>
+            <div class='row'>
+		<div class='col-lg-12'>
+                    <h1>
+                        Welcome to The Widgets and Wingdings Store
+                        <small>The first and only of its kind</small>
+                    </h1>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <p>
+                        content
+                    </p>
+                </div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                    <form action='search_handle.php' method='POST'>
+                        <h3>Search The Store</h3>
+                        <input type='text' class='input-large search-query' name='term' placeholder='Search for an Item'>		
+                        <button type='submit' name='search' value='search' class='btn'>Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
 	";
 }
