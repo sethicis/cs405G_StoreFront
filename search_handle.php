@@ -12,7 +12,7 @@ include_once 'query.php';
  */
 
 function search_type(){
-    if (isset($_POST['search'])) DEBUGGING!!
+    if (isset($_POST['search']))
 	//if (TRUE)
     {
         //Search for term
@@ -22,7 +22,7 @@ function search_type(){
         //Get the details for a particular item
         //displayItemDetails(get_item($term));
         $item = mysqli_fetch_array(get_item($term));
-        if ($item != NULL){
+        if (isset($item)){
             header("Location: item.php?isn=" . $item['isn'] . "&error=0");
         }else{
             //TODO: Handle search term with no hits
