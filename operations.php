@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+include 'cart.php';
+
+//Unused function. May be removed
 function parsePOST($str='test'){
     if(!empty($_POST)){
         if (isset($_POST[$str]) ){
@@ -51,24 +55,4 @@ function navigation(){
     echo     '</tr>';
     echo '</table>';
 echo'</div>';
-}
-
-function cartCount(){
-    //TODO: Return number of items in cart
-    //Stubbed code to allow for compile
-    return '';
-}
-
-function isCustomer(){
-    //Determine if the session has a user logged in as customer
-    //Return false if there is no one logged in or if the user is staff
-    //TODO: add logic to determine presense of customer
-    return false;
-}
-
-function isStaff(){
-    //Determine if the session has a user logged in as staff
-    //Return false if there is no one logged in or if the user is customer
-    //TODO: add logic to determine presense of staff
-    return false;
 }

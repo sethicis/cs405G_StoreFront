@@ -17,7 +17,13 @@ function search_type(){
         $term = $_POST['term']; //Get the name of the variable to search for
         //Feature, add support to search by not just name, but isn as well.
         //Get the details for a particular item
-        displayItemDetails(get_item($term));
+        //displayItemDetails(get_item($term));
+        $item = get_item($term);
+        if ($item != NULL){
+            header("Location: item.php?isn=" . $item['isn'] . "&error=0");
+        }else{
+            //TODO: Handle search term with no hits
+        }
     }
     else{
         //Browse all items
@@ -26,7 +32,7 @@ function search_type(){
     }
 }
 
-head('Lookup Item');
+head('Browse Items');
 
 navigation();
 

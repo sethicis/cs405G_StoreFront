@@ -9,12 +9,13 @@
 &nbsp
 
 <?php
-    $isn = '23kk2';
-    header("Location: item.php?isn=" . $isn . "&error=qty");
-    /*if(!parsePOST('term')){
+//searchBox was updated to redirect to a new location
+//so the extra logic in the index.php file may not be necessary anymore.
+    if(!parsePOST('term')){
         navigation();
         searchBox();
     }
+    //May not be necessary anymore
     else if (parsePOST('term')){
         navigation();
 	echo "term case!";
@@ -24,7 +25,7 @@
         navigation();
 	echo "browse case!";
         displayItems(get_all_items());
-    }*/
+    }
 ?>
 &nbsp
 &nbsp

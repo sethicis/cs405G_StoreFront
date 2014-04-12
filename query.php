@@ -82,7 +82,7 @@ function chk_password($id,$pass,$customer){
     }
 }
 
-function isManager($id){
+function chk_mgt($id){
     $connection = make_connection();
     $id = mysqli_escape_string($connection, $id);
     
@@ -176,7 +176,7 @@ function get_all_items(){
     if (mysqli_num_rows($result) > 0){
         return $result;
     }else{
-        return "No Items found.";
+        return NULL;
     }
 }
 

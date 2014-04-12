@@ -10,7 +10,7 @@ include 'query.php';
  */
 
 function invalid_item_qty($isn){
-    header("Location: 'item.php?isn=" . $isn . "&error=qty'");
+    header("Location: item.php?isn=" . $isn . "&error=1");
 }
 
 function prepare_cart(){
