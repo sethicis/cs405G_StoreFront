@@ -31,12 +31,12 @@ function head($title){
     <meta name=\"author\" content=\"\">
     "
     //This line needs to be altered since the file paths won't be the same
-    . "<link rel=\"shortcut icon\" href=\"/ico/favicon.ico\">
+    . "<link rel=\"shortcut icon\" href=\"ico/favicon.ico\">
 
     <title>" . $title . "</title>
 
     <!-- Bootstrap core CSS -->
-    <link href=\"/css/bootstrap.min.css\" rel=\"stylesheet\">
+    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
 
     <!-- Custom styles for this template -->
     <link href=\"starter-template.css\" rel=\"stylesheet\">
