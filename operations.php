@@ -23,9 +23,14 @@ function searchBox(){
     echo"
         <div class=\"container\">
             <div class='row'>
+                <div class='col-lg-12'>
+                &nbsp
+                </div>
+            </div>
+            <div class='row'>
 		<div class='col-lg-12'>
                     <h1>
-                        Welcome to The Widgets and Wingdings Store
+                        Welcome to The Widgets and Wingdings Store<br>
                         <small>The first and only of its kind</small>
                     </h1>
                 </div>
@@ -38,9 +43,9 @@ function searchBox(){
                 </div>
             <div class='row'>
                 <div class='col-lg-12'>
-                    <form action='search_handle.php' method='POST'>
+                    <form action='search_handle.php' method='POST' class='form-search'>
                         <h3>Search The Store</h3>
-                        <input type='text' class='input-large search-query' name='term' placeholder='Search for an Item'>		
+                        <input type='text' size='30' class='input-medium search-query' name='term' placeholder='Search for an Item'>		
                         <button type='submit' name='search' value='search' class='btn'>Submit</button>
                     </form>
                 </div>
