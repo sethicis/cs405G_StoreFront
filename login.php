@@ -22,7 +22,7 @@ function type(){
 //Return the label associated with the type of login
 function loginType(){
     if ($_GET['type'] === "customer"){
-        return "Email";
+        echo "Email";
     }else{
         echo "Staff ID";
     }
@@ -32,16 +32,16 @@ function loginType(){
  * staff login page, and vice versa.
  */
 function staffIn(){
-    if ($_GET['type'] != "customer"){
+    if ($_GET['type'] == "customer"){
         echo "<div class=\"row\">
             <div class=\"col-lg-12 text-right\">
-                <h6>Not a Customer?</h6>&nbsp;<a href=\"login.php?type=staff&err=no\">Staff Login</a>
+                <h6>Not a Customer?</h6><a href=\"login.php?type=staff&err=no\">Staff Login</a>
             </div>
         </div>";
     }else{
         echo "<div class=\"row\">
             <div class=\"col-lg-12 text-right\">
-                <h6>Not Staff?</h6>&nbsp;<a href=\"login.php?type=customer&err=no\">Customer Login</a>
+                <h6>Not an Employee?</h6><a href=\"login.php?type=customer&err=no\">Customer Login</a>
             </div>
         </div>";
     }
@@ -61,26 +61,30 @@ function staffIn(){
                 </div>
             </div>
             <div class='row'>
-                <div class='col-lg-12 text-center'>
+                <div class='col-lg-12 text-center form-group'>
+                    
                     <form class="form-horizontal" method="POST" action="signin.php">
-                        <div class="control-group">
-                            <label class="control-label" for="inputUsername"><?php loginType() ?></label>
-                            <div class="controls">
-                                <input type="text" id="inputUsername" placeholder="<?php loginType() ?>">
+                        <fieldset>
+                            <legend><?php type()?> Login</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="inputUsername"><?php loginType() ?></label>
+                                <div class="controls">
+                                    <input type="text" id="inputUsername" placeholder="<?php loginType() ?>">
+                                </div>
                             </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="inputPassword">Password</label>
-                            <div class="controls">
-                                <input type="password" id="inputPassword" placeholder="Password">
-                                <?php success() ?>
+                            <div class="control-group">
+                                <label class="control-label" for="inputPassword">Password</label>
+                                <div class="controls">
+                                    <input type="password" id="inputPassword" placeholder="Password">
+                                    <?php success() ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class='control-group'>
-                            <div class="controls">
-                                <button type='submit' name="submit" value="<?php type() ?>" class='btn'>Sign in</button>
+                            <div class='control-group'>
+                                <div class="controls">
+                                    <button type='submit' name="submit" value="<?php type() ?>" class='btn'>Sign in</button>
+                                </div>
                             </div>
-                        </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
