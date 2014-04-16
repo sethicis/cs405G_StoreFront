@@ -41,6 +41,7 @@ function head($title){
     //<!-- Custom styles for this template -->
     //<link href=\"starter-template.css\" rel=\"stylesheet\">
     . "
+    <script> body { padding-top: 60px; } </script>
   </head>";
     error_reporting(E_ALL);
 
