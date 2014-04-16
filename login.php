@@ -22,7 +22,7 @@ function type(){
 //Return the label associated with the type of login
 function loginType(){
     if ($_GET['type'] === "customer"){
-        echo "Email";
+        return "Email";
     }else{
         echo "Staff ID";
     }
@@ -50,7 +50,7 @@ function staffIn(){
 ?>
 
 <?php include "header.php";
-    head(loginType() . " Login"); ?>
+    head("Login Page"); ?>
     <body>
         <?php include "toolbar.php"; ?>
 
