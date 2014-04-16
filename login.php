@@ -69,13 +69,13 @@ function staffIn(){
                             <div class="control-group">
                                 <label class="control-label" for="inputUsername"><?php loginType() ?></label>
                                 <div class="controls">
-                                    <input type="text" id="inputUsername" placeholder="<?php loginType() ?>">
+                                    <input type="text" id="inputUsername" name="inputUsername" placeholder="<?php loginType() ?>">
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="inputPassword">Password</label>
                                 <div class="controls">
-                                    <input type="password" id="inputPassword" placeholder="Password">
+                                    <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
                                     <?php success() ?>
                                 </div>
                             </div>
