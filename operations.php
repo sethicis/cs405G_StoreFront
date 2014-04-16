@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include 'cart.php';
+include_once 'cart.php';
 include 'users.php';
 
 //Unused function. May be removed

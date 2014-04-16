@@ -6,7 +6,8 @@
  * and open the template in the editor.
  */
 
-include "cart.php";
+include_once "cart.php";
+include "users.php";
 
 /*
  * If no one is logged in, create the generic login link
