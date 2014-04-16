@@ -49,32 +49,28 @@ function orders(){
 }
 ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-              <div class="container">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">The Widgets and Wingdings Store</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Welcome Page</a></li>
-                    <?php greet() ?>
-                    <li><a href="items.php">Items</a></li>
-                    <?php shoppingCart() ?>
-                    <?php orders() ?>
-                    <?php login() ?>
-                    <li><a href="#contact">Contact</a></li>
-                  </ul>
-                </div><!--/.nav-collapse -->
-              </div>
-            </div>
-        </div>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">The Widgets and Wingdings Store</a>
     </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.php">Welcome Page</a></li>
+        <?php greet() ?>
+        <li><a href="items.php">Items</a></li>
+        <?php shoppingCart() ?>
+        <?php orders() ?>
+        <?php login() ?>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>

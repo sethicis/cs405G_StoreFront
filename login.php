@@ -54,7 +54,7 @@ function staffIn(){
     <body>
         <?php include "toolbar.php"; ?>
 
-        <!--<div class="container">-->
+        <div class="container">
             <div class='row'>
                 <div class='col-lg-12'>
                 &nbsp
