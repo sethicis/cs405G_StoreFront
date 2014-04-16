@@ -59,11 +59,11 @@ function orders(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">The Widgets and Wingdings Store</a>
+      <a class="navbar-brand" href="index.php">Widgets and Wingdings Store</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php">Welcome Page</a></li>
+        <!--<li class="active"><a href="index.php">Welcome Page</a></li>-->
         <?php greet() ?>
         <li><a href="items.php">Items</a></li>
         <?php shoppingCart() ?>

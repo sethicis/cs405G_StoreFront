@@ -17,7 +17,7 @@ const mTYPE = 3; //type manager
 session_start();
 
 $username = $_POST['inputUsername'];
-$password = $_POST['password'];
+$password = $_POST['inputPassword'];
 $type = $_POST['submit'];
 
 $goto;
