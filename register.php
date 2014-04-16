@@ -44,16 +44,25 @@ function allfields(){
     <?php allfields() ?>
     <div class='row'>
         <div class='col-lg-12 text-center'>
-            <form id="register" method="POST" action="adduser.php">
+            <form class="form-horizontal" id="register" method="POST" action="adduser.php">
                 <fieldset>
                     <legend>Register New Customer</legend>
-                    <label>Email</label>
-                    <input type="text" placeholder="Email" name="email">
-                    <?php nameErr() ?>
-                    <label>Password</label>
-                    <input type="password" id="password1" placeholder="Enter a Password" name="password1">
-                    <?php passErr() ?>
-                    <input type="password" placeholder="Confirm your Password" name="password2">
+                    <div class="control-group">
+                        <label class="control-label" for="email">Email</label>
+                        <div class="controls">
+                            <input type="text" placeholder="Email" id="email" name="email">
+                        </div>
+                        <?php nameErr() ?>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="password1">Password</label>
+                        <div class="controls">
+                            <input type="password" id="password1" placeholder="Enter a Password" name="password1">
+                            <?php passErr() ?>
+                            <input type="password" placeholder="Confirm your Password" name="password2">
+                        </div>
+                    </div>
+                    
                     <label>First Name</label>
                     <input type="text" placeholder="First name" name="fname">
                     <label>Last Name</label>
@@ -86,11 +95,11 @@ function allfields(){
                 lname: {
                     required: true,
                     maxlength: MAX_STRING_LENGTH
-                }
+                },
                 fname: {
                     required: true,
                     maxlength: MAX_STRING_LENGTH
-                }
+                },
                 password1: {
                     required: true,
                     maxlength: MAX_STRING_LENGTH
