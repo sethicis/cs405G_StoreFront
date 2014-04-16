@@ -7,7 +7,7 @@
  */
 
 include_once "cart.php";
-include "users.php";
+include_once "users.php";
 
 /*
  * If no one is logged in, create the generic login link
