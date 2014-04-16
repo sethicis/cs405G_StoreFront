@@ -59,25 +59,48 @@ function allfields(){
                         <div class="controls">
                             <input type="password" id="password1" placeholder="Enter a Password" name="password1">
                             <?php passErr() ?>
-                            <input type="password" placeholder="Confirm your Password" name="password2">
+                            <input type="password" placeholder="Confirm Password" name="password2">
                         </div>
                     </div>
-                    
-                    <label>First Name</label>
-                    <input type="text" placeholder="First name" name="fname">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Last name" name="lname">
+                    <div class="control-group">
+                        <label class='control-label'>First Name</label>
+                        <div class="controls">
+                            <input type="text" placeholder="First name" name="fname">
+                        </div>
+                    </div>
+                    <div class='control-group'>
+                        <label class='control-label'>Last Name</label>
+                        <div class='controls'>
+                            <input type="text" placeholder="Last name" name="lname">
+                        </div>
+                    </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Address</legend>
-                    <label>Street Address</label>
-                    <input type="text" placeholder="street" name="street">
-                    <label>City</label>
-                    <input type="text" placeholder="City" name="city">
-                    <label>State</label>
-                    <input size="2" maxlength="2" type="text" placeholder="State" name="state">
-                    <label>Postal Code</label>
-                    <input type="text" size="6" maxlength="5" placeholder="Zip" name="zip">
+                    <legend>Shipping Address</legend>
+                    <div class='control-group'>
+                        <label class='control-label'>Street Address</label>
+                        <div class='controls'>
+                            <input type="text" placeholder="street" name="street">
+                        </div>
+                    </div>
+                    <div class='control-group'>
+                        <label class='control-label'>City</label>
+                        <div class='controls'>
+                            <input type="text" placeholder="city" name="city">
+                        </div>
+                    </div>
+                    <div class='control-group'>
+                        <label class='control-label'>State</label>
+                        <div class='controls'>
+                            <input type="text" placeholder="state" name="state">
+                        </div>
+                    </div>
+                    <div class='control-group'>
+                        <label class='control-label'>Postal Code</label>
+                        <div class='controls'>
+                            <input type="text" placeholder="zip" name="zip">
+                        </div>
+                    </div>
                 </fieldset>
             </form>
                 
