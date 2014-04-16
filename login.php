@@ -46,6 +46,12 @@ function staffIn(){
         </div>";
     }
 }
+//Create a button for a new customer
+function regButton(){
+    if ($_GET['type'] == "customer"){
+        echo "<button type='submit' name='register' value='register' class='btn'>New Customer</button>";
+    }
+}
 
 ?>
 
@@ -76,12 +82,14 @@ function staffIn(){
                                 <label class="control-label" for="inputPassword">Password</label>
                                 <div class="controls">
                                     <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+                                    <br>
                                     <?php success() ?>
                                 </div>
                             </div>
                             <div class='control-group'>
                                 <div class="controls">
-                                    <button type='submit' name="submit" value="<?php type() ?>" class='btn'>Sign in</button>
+                                    <button type='submit' name="submit" value="<?php type() ?>" class='btn'>Sign in</button>&nbsp;
+                                    <?php regButton() ?>
                                 </div>
                             </div>
                         </fieldset>

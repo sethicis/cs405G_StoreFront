@@ -21,6 +21,12 @@ $password = $_POST['password'];
 $type = $_POST['submit'];
 
 $goto;
+if (isset($_POST['register'])){
+    if ($_POST['register'] == 'register'){
+        header("Location: register.php?err=no");
+        exit;
+    }
+}
 
 if ($type === "customer"){
     if (customer_exists($username)){
