@@ -23,7 +23,7 @@ function login(){
 //  and a staff member.
 function greet(){
     if (isCustomer() or isStaff()){
-        echo "<li>Hello " . $_SESSION['username'] . "</li>";
+        echo "<li><a href='#'>Hello " . $_SESSION['username'] . "!</a></li>";
     }
 }
 
@@ -69,7 +69,7 @@ function orders(){
         <?php shoppingCart() ?>
         <?php orders() ?>
         <?php login() ?>
-        <li><a href="#contact">Contact</a></li>
+        <!--<li><a href="#contact">Contact</a></li>-->
       </ul>
     </div><!--/.nav-collapse -->
   </div>
