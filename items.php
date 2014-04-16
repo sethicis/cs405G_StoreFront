@@ -6,20 +6,11 @@
  * and open the template in the editor.
  */
 
-function promoValue($item){
-   //return $price - ($price * $promo);
-   $price = $item['price'] - ($item['price'] * $item['promotion']);
-   echo "<td><del style='color:red'>$" . strval($item['price']) . 
-           "</del>&nbsp $" . $price . "</td>"; /*. "<td><font style='color:green'>" . 
-           strval(($item['promotion']*100)) . "% off!</font></td>";*/
-   return;
-}
+include_once 'header.php';
+include_once 'item-ops.php';
+include_once 'query.php';
 
 function displayItems($items){
-    echo "<table>"
-    . "<tr>"
-      . "<th>Name</th>" . "<th>Price</th>" . "<th>Promotion</th>" . "<th>ISN</th>"
-    . "</tr>";
     while ($item = mysqli_fetch_array($items)){
         echo "<tr>"
         . "<td>" . $item['name'] . "</td>";
@@ -35,5 +26,28 @@ function displayItems($items){
         echo "<td>" . $item['isn'] . "</td>"
              . "</tr>";
     }
-    echo "</table>";
 }
+
+?>
+
+<?php head("Items"); ?>
+<body>
+    <?php include "toolbar.php"; ?>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-12 text-center'>
+                <table class='table-condensed'>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Promotion</th>
+                        <th>ISN</th>
+                    </tr>
+                    <?php
+                    $items = get_all_available_items();
+                    displayItems($items);
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>

@@ -196,6 +196,18 @@ function increase_item_qty($name,$quantity){
     //stubbed.
 }
 
+function get_all_available_items(){
+    $connection = make_connection();
+    
+    $all_avail_items_query = "SELECT * FROM Items WHERE quantity > 0 ORDER BY name asc;";
+    $result = send_query($connection, $all_avail_items_query);
+    if (mysqli_num_rows($result) > 0){
+        return ($result);
+    }else{
+        return null;
+    }
+}
+
 function get_all_items(){
     $connection = make_connection();
     
