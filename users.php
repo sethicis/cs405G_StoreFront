@@ -5,30 +5,51 @@
  * and open the template in the editor.
  */
 
+const cTYPE = 1;
+const sTYPE = 2;
+const mTYPE = 3;
+const USERTYPE = 'utype';
+const USERNAME = 'username';
+const USERID = 'userid';
+
 include_once 'query.php';
 
 session_start();
 
 function isCustomer(){
-    //Determine if the session has a user logged in as customer
-    //Return false if there is no one logged in or if the user is staff
-    //TODO: add logic to determine presense of customer
-    return isset($_SESSION['customer']);
+    if (isset($_SESSION[USERID])){
+        if ($_SESSION[USERTYPE] == cTYPE)
+            return TRUE;
+    }
+    return FALSE;
 }
 
 function isStaff(){
-    //Determine if the session has a user logged in as staff
-    //Return false if there is no one logged in or if the user is customer
-    //TODO: add logic to determine presense of staff
-    return isset($_SESSION['staff']);
+    if (isset($_SESSION[USERID])){
+        if ($_SESSION[USERTYPE] == sTYPE)
+            return TRUE;
+    }
+    return FALSE;
 }
 
 //isManager function implies isStaff so no need to call both
 //when checking if a person has writes to access something
 function isManager(){
-    if (isStaff()){
-        return (chk_mgt($_SESSION['staff']));
+    if (isset($_SESSION[USERID])){
+        if ($_SESSION[USERTYPE] == mTYPE)
+            return TRUE;
     }
     return FALSE;
 }
+//Returns whether or not a user is logged in.
+//If a user is logged in then it returns their unique id.
+//If no user is logged in the function returns null.
+function logged_in_user() {
+    if (isset($_SESSION[USERID])){
+        return $_SESSION[USERID];
+    }else{
+        return null;
+    }
+}
+
 

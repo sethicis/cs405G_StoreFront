@@ -52,6 +52,8 @@ function customer_exists($username){
     }
 }
 
+
+
 function staff_exists($username){
     $connection = make_connection();
     $username = mysqli_escape_string($connection, $username);
@@ -79,6 +81,30 @@ function chk_password($id,$pass,$customer){
         return TRUE;
     }else{
         return FALSE;
+    }
+}
+
+function get_customer($id){
+    $connection = make_connection();
+    $id = mysqli_escape_string($connection, $id);
+    $customer_query = "SELECT * FROM Customers WHERE email = '$id';";
+    $result = send_query($connection, $customer_query);
+    if (mysqli_num_rows($result) > 0){
+        return mysqli_fetch_assoc($result);
+    }else{
+        return null;
+    }
+}
+
+function get_staff($id){
+    $connection = make_connection();
+    $id = mysqli_escape_string($connection, $id);
+    $staff_query = "SELECT * FROM Staff WHERE sid = '$id';";
+    $result = send_query($connection, $staff_query);
+    if (mysqli_num_rows($result) > 0){
+        return mysqli_fetch_assoc($result);
+    }else{
+        return null;
     }
 }
 

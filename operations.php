@@ -38,7 +38,7 @@ function searchBox(){
             <div class='row'>
                 <div class='col-lg-12'>
                     <p>
-                        content
+                        &nbsp
                     </p>
                 </div>
             </div>
