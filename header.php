@@ -32,16 +32,21 @@ function head($title){
     "
     //This line needs to be altered since the file paths won't be the same
     . "<link rel=\"shortcut icon\" href=\"ico/favicon.ico\">
-
+    
     <title>" . $title . "</title>
 
     <!-- Bootstrap core CSS -->
     <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
+    <style> 
+        body { 
+            padding-top: 60px; 
+            } 
+    </style>
     "
     //<!-- Custom styles for this template -->
     //<link href=\"starter-template.css\" rel=\"stylesheet\">
     . "
-    <script> body { padding-top: 60px; } </script>
+    
   </head>";
     error_reporting(E_ALL);
 
