@@ -46,12 +46,10 @@ function displayItems($items){
 
 function populateItems(){
     $items = null;
-    if (logged_in_user() != null){
-        if (isStaff()){
-            $items = get_all_items();
-        }else{
-            $items = get_all_available_items();
-        }
+    if ((logged_in_user() != null) and isStaff()){
+        $items = get_all_items();
+    }else{
+        $items = get_all_available_items();
     }
     displayItems($items);
 }
