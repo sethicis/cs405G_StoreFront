@@ -6,7 +6,7 @@
  */
 
 include_once 'cart.php';
-include 'users.php';
+include_once 'users.php';
 function make_connection() {
     //Get info from ini file for server connection
     $info = parse_ini_file('database.ini');
