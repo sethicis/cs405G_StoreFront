@@ -46,7 +46,7 @@ function customer_exists($username){
     $connection = make_connection();
     $username = mysqli_escape_string($connection, $username);
     
-    $customer_exists_query = "SELECT * FROM Customers WHERE email = '$username'";
+    $customer_exists_query = "SELECT * FROM Customers WHERE email = '$username';";
     $rows = send_query($connection, $customer_exists_query);
     if (mysqli_num_rows($rows) > 0){
         return TRUE;
@@ -61,7 +61,7 @@ function staff_exists($username){
     $connection = make_connection();
     $username = mysqli_escape_string($connection, $username);
     
-    $staff_exists_query = "SELECT * FROM Staff WHERE sid = '$username'";
+    $staff_exists_query = "SELECT * FROM Staff WHERE sid = '$username';";
     $rows = send_query($connection, $staff_exists_query);
     if (mysqli_num_rows($rows) > 0){
         return TRUE;
@@ -75,9 +75,9 @@ function chk_password($id,$pass,$customer){
     $id = mysqli_escape_string($connection, $id);
     $pass = mysqli_escape_string($connection, $pass);
     if ($customer){
-    $pass_query = "SELECT * FROM Customers WHERE email = '$id' AND password = '$pass'";
+    $pass_query = "SELECT * FROM Customers WHERE email = '$id' AND password = '$pass';";
     }else{
-        $pass_query = "SELECT * FROM Staff WHERE sid = '$id' AND password = '$pass'";
+        $pass_query = "SELECT * FROM Staff WHERE sid = '$id' AND password = '$pass';";
     }
     $rows = send_query($connection, $pass_query);
     if (mysqli_num_rows($rows) > 0){
@@ -148,7 +148,7 @@ function check_for_mysql_error($con,$err){
 }
 
 function customer_orders($customer){
-    $connecction = make_connection();
+    $connection = make_connection();
     $customer = mysqli_escape_string($customer);
     $customer_orders_query = "SELECT (O.id,O.status,O.date)"
             . "FROM "
@@ -179,14 +179,20 @@ function all_orders(){
 function get_ordered_items($id){
     $connection = make_connection();
     $items_in_order_query = "SELECT "
-            . "i.name,i.price,i.promotion,i.isn,pi.quantity "
+            . "i.name,i.price,i.promotion,i.isn,o.quantity "
             . "FROM "
             . "Items AS i, "
             . "("
                 . "SELECT b.isn,b.quantity "
                 . "FROM Bought AS b "
-                . "WHERE b.id = '${id}') AS pi"
-            . "WHERE i.isn = pi.isn;";
+                . "WHERE b.id = '${id}') AS o"
+            . "WHERE i.isn = o.isn;";
+    $result = send_query($connection, $items_in_order_query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
 }
 
 function purchase_items($cartItems){
