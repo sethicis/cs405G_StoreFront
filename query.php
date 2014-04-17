@@ -151,12 +151,12 @@ function purchase_items($cartItems){
     $connection = make_connection();
     
     $orderID = generateOrderID();
-    $newOrderQuery = "INSERT INTO TABLE Orders (id,date) VALUE ('${orderID}',CURDATE());";
+    $newOrderQuery = "INSERT INTO Orders (id,date) VALUE ('${orderID}',CURDATE());";
     check_for_mysql_error($connection, send_query($connection, $newOrderQuery));
-    $newPurchaseQuery = "INSERT INTO TABLE Purchased VALUE ('" . logged_in_user() . "','${orderID}');";
+    $newPurchaseQuery = "INSERT INTO Purchased VALUE ('" . logged_in_user() . "','${orderID}');";
     check_for_mysql_error($connection, send_query($connection, $newPurchaseQuery));
     foreach ($cartItems as $isn => $qty){
-        $newBoughtQuery = "INSERT INTO TABLE Bought VALUE ('${isn}','${orderID}',strval($qty));";
+        $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}',strval($qty));";
         check_for_mysql_error($connection, send_query($connection, $newBoughtQuery));
         remove_item_from_cart($isn);
     }
