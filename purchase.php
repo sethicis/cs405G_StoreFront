@@ -17,14 +17,6 @@ if (logged_in_user() == NULL){
     exit;
 }
 
-foreach ($cartItems as $isn => $qty){
-    if (get_item_quantity($isn) < $qty){
-        $goto = 'viewCart.php?err=' . $isn;
-        header("Location: ${goto}");
-        exit;
-    }
-}
-
 purchase_items($cartItems);
 
 header("Location: orders.php?type=customer");

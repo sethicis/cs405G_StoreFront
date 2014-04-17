@@ -33,8 +33,9 @@ function search_type(){
         $items = get_all_items();
 	head('Browse Items');
 	echo "<body>";
-	navigation();
-        displayItems($items);
+        include 'toolbar.php';
+        echo "<p>Blank Page...</p>";
+        include 'footer.php';
 	echo "</body>";
     }
 }
