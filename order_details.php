@@ -44,7 +44,7 @@ function get_order_items(){
     }
     
     echo "<tr>
-            <td>---</td><td>---</td><td>---</td><td>${count}</td><td>\$${sum}</td>
+            <td>---</td><td>---</td><td>---</td><td>${count}</td><td>---</td><td>\$${sum}</td>
          </tr>";
 }
 
