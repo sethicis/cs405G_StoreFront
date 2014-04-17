@@ -21,7 +21,7 @@ function itemPrice(){
     if ($item['promotion'] > 0){
         promoValue($item);
     }else{
-        echo $item['price'];
+        echo "$" . $item['price'];
     }
 }
 
@@ -86,7 +86,7 @@ function itemISN(){
                             <legend>Order Item</legend>
                             <div class='control-group'>
                                 <label class='control-label'>Order Quantity</label>
-                                <div class='controls'>
+                                <div class='controls' style='padding-bottom: 5px;'>
                                     <input type='text' size='3' name='qty' id='orderQty'>
                                 </div>
                             </div>

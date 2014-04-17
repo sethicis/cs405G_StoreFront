@@ -10,9 +10,8 @@ include 'cart.php';
 include 'query.php';
 include 'header.php';
 
-$cartItems = get_cart_items();
-
 function cartItems(){
+    $cartItems = get_cart_items();
     foreach ($cartItems as $isn => $qty){
         $itemInfo = get_item_by_isn($isn);
         echo 
