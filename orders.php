@@ -7,8 +7,8 @@
  */
 
 include "header.php";
-include "users.php";
-include "query.php";
+include_once "users.php";
+include_once "query.php";
 
 function get_customer_orders(){
     $customer_orders = customer_orders(logged_in_user());
