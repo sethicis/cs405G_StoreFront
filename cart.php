@@ -54,6 +54,15 @@ function update_cart($isn, $qty=1){
     save_cart($cart);
 }
 
+//Remove a specific item from the cart.
+function remove_item_from_cart($isn){
+    $cart = get_cart_items();
+    if (array_key_exists($isn, $cart)){
+        unset($cart[$isn]);
+        save_cart($cart);
+    }
+}
+
 function get_cart_items(){
     if (cartExists()){
         return unserialize($_SESSION[CART_NAME]);

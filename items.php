@@ -13,9 +13,9 @@ include_once 'query.php';
 function displayItems($items){
     while ($item = mysqli_fetch_array($items)){
         echo "<tr>"
-        . "<td>" . $item['name'] . "</td>";
+        . "<td><a href='item.php?isn=${item['isn']}&err=0'>" . $item['name'] . "</a></td>";
         if (($item['promotion']) > 0){
-            promoValue($item);
+            echo "<td>";promoValue($item); echo "</td>";
             //$price = $item['price'] - ($item['price'] * $item['promotion']);
             //echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>" . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
             echo "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
@@ -36,7 +36,7 @@ function displayItems($items){
     <div class='container'>
         <div class='row'>
             <div class='col-lg-12 text-center'>
-                <table class='table-condensed'>
+                <table class='table table-hover'>
                     <tr>
                         <th>Name</th>
                         <th>Price</th>
@@ -51,3 +51,6 @@ function displayItems($items){
             </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
+</body>
+</html>
