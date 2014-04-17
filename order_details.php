@@ -10,6 +10,21 @@ include 'header.php';
 include_once 'query.php';
 include_once 'users.php';
 
+function processErr(){
+    $errcount = $_GET['errcount'];
+    if (intval($errcount) > 0){
+        echo "<div class='row'>";
+        echo "<div class='col-lg-12 text-center'>";
+        for ($i = 0; $i < intval($errcount); $i += 1){
+            $err = "err" . strval($i);
+            $err = $_GET[$err];
+            echo "<font style='color:red'>Item isn " . $err . " in order " . $_GET['order']
+             . " has insuffient inventory</font><br>";
+        }
+        echo "</div></div>";
+    }
+}
+
 function get_order_items(){
     $orderID = $_GET['order'];
     $order = get_ordered_items($orderID);

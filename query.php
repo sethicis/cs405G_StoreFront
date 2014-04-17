@@ -209,6 +209,14 @@ function get_ordered_items($id){
     }
 }
 
+function set_order_shipped($id){
+    $connection = make_connection();
+    
+    $set_shipped_query = "UPDATE Orders status = 'shipped' WHERE id = '${id}';";
+    check_for_mysql_error($connection, send_query($connection, $set_shipped_query));
+    
+}
+
 function purchase_items($cartItems){
     $connection = make_connection();
     

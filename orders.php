@@ -15,7 +15,7 @@ function get_customer_orders(){
     $customer_orders = customer_orders($user);
     while ($order = mysqli_fetch_array($customer_orders)){
         echo "<tr>";
-        echo "<td><a href='order_details.php?order=" . $order['id'] . "'>"
+        echo "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
         echo "<td>" . $order['status'] . "</td>";
@@ -28,7 +28,7 @@ function get_all_orders(){
     while ($order = mysqli_fetch_array($all_orders)){
         echo "<tr>";
         echo "<td>" . $order['email'] . "</td>"
-        . "<td><a href='order_details.php?order=" . $order['id'] . "'>"
+        . "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
         echo "<td>" . $order['status'] . "</td>";
