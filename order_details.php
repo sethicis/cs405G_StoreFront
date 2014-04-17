@@ -56,7 +56,7 @@ function staffView(){
     if (isStaff()){
         echo "<div class='row'>"
         . "<div class='col-lg-9'>"
-                . "<h3>Ordering Customer Info"
+                . "<h3>Customer Info"
                 . "<table class='table table-condensed>"
                 . "<tr>"
                 . "<th>Email</th><th>First Name</th><th>Last Name</th>"
@@ -72,6 +72,7 @@ function staffView(){
         echo "</table>";
         echo "</div>";
         print_order_status();
+        echo "</div>";
     }
 }
 head("Order Details");

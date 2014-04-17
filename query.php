@@ -87,6 +87,20 @@ function chk_password($id,$pass,$customer){
     }
 }
 
+function get_customer_for_order($orderID){
+    $connection = make_connection();
+    $query = "SELECT * "
+            . "FROM "
+            . "(SELECT email FROM Purchased WHERE id = '${orderID}') AS o,"
+            . " Customers AS c WHERE c.email = o.email;";
+    $result = send_query($connection, $query);
+    if (mysqli_num_rows($result) > 0){
+        return mysqli_fetch_assoc($result);
+    }else{
+        return null;
+    }
+}
+
 function get_customer($id){
     $connection = make_connection();
     $id = mysqli_escape_string($connection, $id);
