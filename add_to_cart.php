@@ -8,13 +8,15 @@ include_once 'query.php';
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-function redir_to_item($err){
-    header("Location: item.php?isn=${isn}&err=${err}");
-}
 $isn = $_POST['isn'];
     //$item = get_item_by_isn($_POST['isn']);
 $qty = $_POST['qty'];
+
+function redir_to_item($err){
+    global $isn;
+    header("Location: item.php?isn=${isn}&err=${err}");
+}
+
 if (chk_sufficient_quantity($isn, $qty))
 {
         add_to_cart($isn,$qty);

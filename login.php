@@ -86,7 +86,7 @@ function regButton(){
                                     <?php success() ?>
                                 </div>
                             </div>
-                            <div class='control-group' style="padding-bottom: 5px;">
+                            <div class='control-group' style="padding-top: 5px;">
                                 <div class="controls">
                                     <button type='submit' name="submit" value="<?php type() ?>" class='btn'>Sign in</button>&nbsp;
                                     <?php regButton() ?>
