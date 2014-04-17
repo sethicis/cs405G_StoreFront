@@ -156,7 +156,7 @@ function purchase_items($cartItems){
     $newPurchaseQuery = "INSERT INTO Purchased VALUE ('" . logged_in_user() . "','${orderID}');";
     check_for_mysql_error($connection, send_query($connection, $newPurchaseQuery));
     foreach ($cartItems as $isn => $qty){
-        $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}',strval($qty));";
+        $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}'," . strval($qty) . ");";
         check_for_mysql_error($connection, send_query($connection, $newBoughtQuery));
         remove_item_from_cart($isn);
     }
