@@ -81,9 +81,8 @@ head("Order Details");
 <body>
     <?php include 'toolbar.php'; ?>
     <div class='container'>
-        <?php staffView(); ?>
         <div class='row'>
-            <div class='col-lg-12 text-center'>
+            <div class='col-lg-12'>
                 <?php tableTitle() ?>
             </div>
         </div>
@@ -97,6 +96,7 @@ head("Order Details");
                 </table>
             </div>
         </div>
+        <?php staffView(); ?>
     </div>
     <?php include "footer.php"; ?>
 </body>
