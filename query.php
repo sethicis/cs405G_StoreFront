@@ -127,7 +127,7 @@ function chk_mgt($id){
 function generateOrderID(){
     $connection = make_connection();
     $order_count_query = "SELECT COUNT(*) AS Count FROM Orders;";
-    $id;
+    $id = "";
     $result = send_query($connection, $order_count_query);
     if (mysqli_num_rows($result) > 0){
         $result = mysqli_fetch_assoc($result);
@@ -147,6 +147,48 @@ function check_for_mysql_error($con,$err){
     }
 }
 
+function customer_orders($customer){
+    $connecction = make_connection();
+    $customer = mysqli_escape_string($customer);
+    $customer_orders_query = "SELECT (O.id,O.status,O.date)"
+            . "FROM "
+            . "(SELECT id FROM Purchased WHERE email = '${customer}') AS t1,"
+            . " Orders AS O "
+            . "WHERE O.id = t1.id;";
+    $result = send_query($connection, $customer_orders_query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
+}
+
+function all_orders(){
+    $connection = make_connection();
+    $all_orders_query = "SELECT c.email,o.*"
+            . "FROM Purchased AS c, Orders AS o "
+            . "WHERE c.id = o.id;";
+    $result = send_query($connection, $all_orders_query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
+}
+
+function get_ordered_items($id){
+    $connection = make_connection();
+    $items_in_order_query = "SELECT "
+            . "i.name,i.price,i.promotion,i.isn,pi.quantity "
+            . "FROM "
+            . "Items AS i, "
+            . "("
+                . "SELECT b.isn,b.quantity "
+                . "FROM Bought AS b "
+                . "WHERE b.id = '${id}') AS pi"
+            . "WHERE i.isn = pi.isn;";
+}
+
 function purchase_items($cartItems){
     $connection = make_connection();
     
@@ -158,6 +200,7 @@ function purchase_items($cartItems){
     foreach ($cartItems as $isn => $qty){
         $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}'," . strval($qty) . ");";
         check_for_mysql_error($connection, send_query($connection, $newBoughtQuery));
+        lower_item_qty($isn, $qty);
         remove_item_from_cart($isn);
     }
 }
@@ -214,17 +257,17 @@ function update_item($name, $quantity, $promotion){
     return;
 }
 
-function lower_item_qty($name,$quantity){
+function lower_item_qty($isn,$quantity){
     $connection = make_connection();
-    $name = mysqli_escape_string($connection, $name);
-    $query = "SELECT quantity FROM Items WHERE name = '$name';";
+    $isn = mysqli_escape_string($connection, $isn);
+    $query = "SELECT quantity FROM Items WHERE isn = '${isn}';";
     $item = mysqli_fetch_assoc(send_query($connection, $query));
     $curCount = $item['quantity'];
     $newCount = $curCount - $quantity;
     
     $new_Item_count_sql = "UPDATE Items"
-            . "SET Items.quantity = $newCount"
-            . "WHERE Items.name = '$name';";
+            . "SET Items.quantity = ${newCount}"
+            . "WHERE Items.isn = '${isn}';";
     send_query($connection, $new_Item_count_sql);
     return;
 }
