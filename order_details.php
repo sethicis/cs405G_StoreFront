@@ -56,8 +56,8 @@ function staffView(){
     if (isStaff()){
         echo "<div class='row'>"
         . "<div class='col-lg-9'>"
-                . "<h3>Customer Info"
-                . "<table class='table table-condensed>"
+                . "<h3>Customer Info</h3>"
+                . "<table class='table table-condensed'>"
                 . "<tr>"
                 . "<th>Email</th><th>First Name</th><th>Last Name</th>"
                 . "<th>Street</th><th>City</th><th>State</th><th>Zipcode</th>"
