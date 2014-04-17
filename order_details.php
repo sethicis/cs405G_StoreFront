@@ -7,8 +7,8 @@
  */
 
 include 'header.php';
-include 'query.php';
-include 'users.php';
+include_once 'query.php';
+include_once 'users.php';
 
 function get_order_items(){
     $orderID = $_GET['order'];

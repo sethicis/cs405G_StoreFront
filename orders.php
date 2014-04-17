@@ -28,7 +28,7 @@ function get_all_orders(){
     while ($order = mysqli_fetch_array($all_orders)){
         echo "<tr>";
         echo "<td>" . $order['email'] . "</td>"
-        . "<td><a href='order_details?order=" . $order['id'] . "'>"
+        . "<td><a href='order_details.php?order=" . $order['id'] . "'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
         echo "<td>" . $order['status'] . "</td>";
