@@ -4,6 +4,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+include_once 'cart.php';
+include 'users.php';
 function make_connection() {
     //Get info from ini file for server connection
     $info = parse_ini_file('database.ini');
@@ -118,6 +121,44 @@ function chk_mgt($id){
         return TRUE;
     }else{
         return FALSE;
+    }
+}
+
+function generateOrderID(){
+    $connection = make_connection();
+    $order_count_query = "SELECT COUNT(*) AS Count FROM Orders;";
+    $id;
+    $result = send_query($connection, $order_count_query);
+    if (mysqli_num_rows($result) > 0){
+        $result = mysqli_fetch_assoc($result);
+        $id = strval($result['Count']);
+        while (strlen($id) < 6){
+            $id = '0' . $id;
+        }
+    }else{
+        $id = '000000';
+    }
+    return $id;
+}
+
+function check_for_mysql_error($con,$err){
+    if (!$err){
+        die('Error: ' . mysqli_error($con));
+    }
+}
+
+function purchase_item($cartItems){
+    $connection = make_connection();
+    
+    $orderID = generateOrderID();
+    $newOrderQuery = "INSERT INTO TABLE Orders (id,date) VALUE ('${orderID}',CURDATE());";
+    check_for_mysql_error($connection, send_query($connection, $newOrderQuery));
+    $newPurchaseQuery = "INSERT INTO TABLE Purchased VALUE ('" . logged_in_user() . "','${orderID}');";
+    check_for_mysql_error($connection, send_query($connection, $newPurchaseQuery));
+    foreach ($cartItems as $isn => $qty){
+        $newBoughtQuery = "INSERT INTO TABLE Bought VALUE ('${isn}','${orderID}',strval($qty));";
+        check_for_mysql_error($connection, send_query($connection, $newBoughtQuery));
+        remove_item_from_cart($isn);
     }
 }
 
