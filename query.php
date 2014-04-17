@@ -193,7 +193,8 @@ function all_orders(){
 function get_ordered_items($id){
     $connection = make_connection();
     $items_in_order_query = "SELECT "
-            . "i.name,i.price,i.promotion,i.isn,o.quantity "
+            . "i.name,i.price,i.promotion"
+            . ",i.isn,o.quantity AS oqty,i.quantity AS iqty "
             . "FROM "
             . "Items AS i, "
             . "("

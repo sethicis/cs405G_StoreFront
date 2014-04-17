@@ -35,11 +35,12 @@ function get_order_items(){
             . $row['name'] . "</td>";
             echo "<td>" . $row['isn'] . "</td>";
             echo "<td>\$" . strval($row['price'] - $row['promotion']*$row['price']) . "</td>";
-            echo "<td>" . strval($row['quantity']) . "</td>";
-            echo "<td>\$" . strval(($row['price'] - $row['promotion']*$row['price'])*$row['quantity']) . "</td>";
+            echo "<td>" . strval($row['oqty']) . "</td>";
+            if (isStaff()) { echo "<td>" . strval($row['iqty']) . "</td>"; }
+            echo "<td>\$" . strval(($row['price'] - $row['promotion']*$row['price'])*$row['oqty']) . "</td>";
         echo "</tr>";
-        $sum += ($row['price'] - $row['promotion']*$row['price'])*$row['quantity'];
-        $count += ($row['quantity']);
+        $sum += ($row['price'] - $row['promotion']*$row['price'])*$row['oqty'];
+        $count += ($row['oqty']);
     }
     
     echo "<tr>
@@ -56,10 +57,10 @@ function print_order_status(){
     $orderID = $_GET['order'];
     $order = get_order($orderID);
     echo "<div class='col-lg-3'>"
-        . "<form action='shiporder.php' method='POST'>"
+        . "<form action='shiporders.php' method='POST'>"
         . "<table class='table table-condensed'>"
         . "<tr><th>Order Status</th></tr>"
-        . "<tr><td>" . $order['status'] . "</td></tr>"
+        . "<tr><td><font style='color:red;'>" . $order['status'] . "</font></td></tr>"
         . "<tr><td>"
         . "<button type='submit' class='btn' name='order' value='" . $orderID . "'>Ship It</button>"
         . "</td></tr>"
@@ -105,7 +106,12 @@ head("Order Details");
             <div class='col-lg-12'>
                 <table class='table table-striped'>
                     <tr>
-                        <th>Item Name</th><th>ISN</th><th>Price</th><th>Order Quantity</th><th>Total</th>
+                        <th>Item Name</th>
+                        <th>ISN</th>
+                        <th>Price</th>
+                        <th>Order Qty</th>
+                            <?php if (isStaff()) {echo "<th>Inventory Qty</th>";} ?>
+                        <th>Total</th>
                     </tr>
                     <?php get_order_items(); ?>
                 </table>
