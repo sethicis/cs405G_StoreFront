@@ -10,7 +10,7 @@ include_once 'header.php';
 include_once 'item-ops.php';
 include_once 'query.php';
 
-function addUpdateBtn(){
+function addUpdateBtn($isn = null){
     if ($_GET['edit'] == 'yes'){
         echo "<td><button class='btn' type='submit' name='updateQty'>Update</button>";
     }
@@ -18,7 +18,7 @@ function addUpdateBtn(){
 
 function addQty($qty,$isn){
     if ($_GET['edit'] == 'yes'){
-        echo "<td><input type='text' name='" . $isn . "' value='" . strval($qty) . "'></td>";
+        echo "<td><input type='text' size='4' name='" . $isn . "' value='" . strval($qty) . "'></td>";
     }else{
         echo "<td>" . strval($qty) . "</td>";
     }
@@ -84,7 +84,8 @@ function tableheader(){
     <?php include "toolbar.php"; ?>
     <div class='container'>
         <div class='row'>
-            <div class='col-lg-12 text-center'>
+            <div class='col-lg-12'>
+                <form action='updateInventory.php' method='POST'>
                 <table class='table table-hover'>
                     <?php tableheader() ?>
                     <tr>
@@ -97,10 +98,9 @@ function tableheader(){
                     </tr>
                     <?php
                     populateItems();
-                    //if (isStaff()){ echo "<tr><td colspan='5' style='align-text: right'>"
-                    //. "<a class='btn' href='updateInventory.php'>Update Inventory</a></td></tr>";}
                     ?>
                 </table>
+                </form>
             </div>
         </div>
     </div>
