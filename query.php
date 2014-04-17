@@ -149,8 +149,8 @@ function check_for_mysql_error($con,$err){
 
 function customer_orders($customer){
     $connection = make_connection();
-    $customer = mysqli_escape_string($customer);
-    $customer_orders_query = "SELECT (O.id,O.status,O.date)"
+    //$customer = mysqli_escape_string($customer);
+    $customer_orders_query = "SELECT O.id,O.status,O.date "
             . "FROM "
             . "(SELECT id FROM Purchased WHERE email = '${customer}') AS t1,"
             . " Orders AS O "

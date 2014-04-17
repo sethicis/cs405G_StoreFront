@@ -11,7 +11,9 @@ include_once "users.php";
 include_once "query.php";
 
 function get_customer_orders(){
-    $customer_orders = customer_orders(logged_in_user());
+    $user = logged_in_user();
+    echo $user;
+    $customer_orders = customer_orders($user);
     while ($order = mysqli_fetch_array($customer_orders)){
         echo "<tr>";
         echo "<td><a href='order_details?order=" . $order['id'] . "'>"
