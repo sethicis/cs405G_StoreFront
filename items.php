@@ -23,9 +23,24 @@ function displayItems($items){
         else{
             echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
         }
-        echo "<td>" . $item['isn'] . "</td>"
-             . "</tr>";
+        echo "<td>" . $item['isn'] . "</td>";
+        if (isStaff()){
+            echo "<td>" . strval($item['quantity']) . "</td>";
+        }
+        echo "</tr>";
     }
+}
+
+function populateItems(){
+    $items = null;
+    if (logged_in_user() != null){
+        if (isStaff()){
+            $items = get_all_items();
+        }else{
+            $items = get_all_available_items();
+        }
+    }
+    displayItems($items);
 }
 
 ?>
@@ -42,10 +57,12 @@ function displayItems($items){
                         <th>Price</th>
                         <th>Promotion</th>
                         <th>ISN</th>
+                        <?php if (isStaff()){ echo "<th>Quantity</th>";} ?>
                     </tr>
                     <?php
-                    $items = get_all_available_items();
-                    displayItems($items);
+                    populateItems();
+                    if (isStaff()){ echo "<tr><td colspan='5' style='align-text: right'>"
+                    . "<a class='btn' href='updateInventory.php'>Update Inventory</a></td></tr>";}
                     ?>
                 </table>
             </div>

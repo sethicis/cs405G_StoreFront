@@ -36,11 +36,6 @@ function itemDiscount(){
     }
 }
 
-function itemQty(){
-    global $item;
-    echo $item['quantity'];
-}
-
 function itemDescription(){
     global $item;
     echo $item['description'];
@@ -71,9 +66,6 @@ function itemISN(){
                         </tr>
                         <tr>
                             <th>Discount</th><td><?php itemDiscount(); ?></td>
-                        </tr>
-                        <tr>
-                            <th>quantity</th><td><?php itemQty(); ?></td>
                         </tr>
                         <tr>
                             <th>Description</th><td><?php itemDescription(); ?></td>
