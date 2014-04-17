@@ -185,7 +185,7 @@ function get_ordered_items($id){
             . "("
                 . "SELECT b.isn,b.quantity "
                 . "FROM Bought AS b "
-                . "WHERE b.id = '${id}') AS o"
+                . "WHERE b.id = '${id}') AS o "
             . "WHERE i.isn = o.isn;";
     $result = send_query($connection, $items_in_order_query);
     if (mysqli_num_rows($result) > 0){
