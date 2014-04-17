@@ -27,7 +27,7 @@ if ($count > 0){
     header("Location: ${goto}");
     exit;
 }else{
-    while ($row = myqli_fetch_array($order)){
+    while ($row = mysqli_fetch_array($order)){
         lower_item_qty($row['isn'], $row['quantity']);
     }
     set_order_shipped($orderID);
