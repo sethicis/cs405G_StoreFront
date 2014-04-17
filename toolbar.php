@@ -65,7 +65,7 @@ function orders(){
       <ul class="nav navbar-nav">
         <!--<li class="active"><a href="index.php">Welcome Page</a></li>-->
         <?php greet() ?>
-        <li><a href="items.php">Items</a></li>
+        <li><a href="items.php?edit=no">Items</a></li>
         <?php shoppingCart() ?>
         <?php orders() ?>
         <?php login() ?>

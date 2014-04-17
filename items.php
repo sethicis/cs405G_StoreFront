@@ -10,14 +10,26 @@ include_once 'header.php';
 include_once 'item-ops.php';
 include_once 'query.php';
 
+function addUpdateBtn(){
+    if ($_GET['edit'] == 'yes'){
+        echo "<td><button class='btn' type='submit' name='updateQty'>Update</button>";
+    }
+}
+
+function addQty($qty,$isn){
+    if ($_GET['edit'] == 'yes'){
+        echo "<td><input type='text' name='" . $isn . "' value='" . strval($qty) . "'></td>";
+    }else{
+        echo "<td>" . strval($qty) . "</td>";
+    }
+}
+
 function displayItems($items){
     while ($item = mysqli_fetch_array($items)){
         echo "<tr>"
         . "<td><a href='item.php?isn=${item['isn']}&err=0'>" . $item['name'] . "</a></td>";
         if (($item['promotion']) > 0){
             echo "<td>";promoValue($item); echo "</td>";
-            //$price = $item['price'] - ($item['price'] * $item['promotion']);
-            //echo "<td><del style='color:red'>$" . strval($item['price']) . "</del>&nbsp $" . $price . "</td>" . "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
             echo "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
         }
         else{
@@ -25,7 +37,8 @@ function displayItems($items){
         }
         echo "<td>" . $item['isn'] . "</td>";
         if (isStaff()){
-            echo "<td>" . strval($item['quantity']) . "</td>";
+            addQty($item['quantity'],$item['isn']);
+            addUpdateBtn();
         }
         echo "</tr>";
     }
@@ -43,6 +56,29 @@ function populateItems(){
     displayItems($items);
 }
 
+function addEditButton(){
+    if ($_GET['edit'] == 'yes'){
+        echo "<a class='btn' href='items.php?edit=no'>Update Inventory</a>";
+    }else{
+        echo "<a class='btn' href='items.php?edit=yes'>Update Inventory</a>";
+    }
+}
+
+function tableheader(){
+    if (isStaff()){ 
+        echo "<thead>";
+        echo "<tr>";
+        echo "<td colspan='4'><h4>All Merchandise</h4></td>"
+        . "<td style='align-text: right'>";
+        addEditButton();
+        echo "</td></tr></thead>";
+    }else{
+        echo "<thead>";
+        echo "<tr>";
+        echo "<td colspan='4'><h4>All Merchandise</h4></td>";
+        echo "</tr></thead>";
+    }
+}
 ?>
 
 <?php head("Items"); ?>
@@ -52,17 +88,19 @@ function populateItems(){
         <div class='row'>
             <div class='col-lg-12 text-center'>
                 <table class='table table-hover'>
+                    <?php tableheader() ?>
                     <tr>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Promotion</th>
                         <th>ISN</th>
                         <?php if (isStaff()){ echo "<th>Quantity</th>";} ?>
+                        <?php if (($_GET['edit'] == 'yes') and isStaff()) { echo "<th>Update</th>"; } ?>
                     </tr>
                     <?php
                     populateItems();
-                    if (isStaff()){ echo "<tr><td colspan='5' style='align-text: right'>"
-                    . "<a class='btn' href='updateInventory.php'>Update Inventory</a></td></tr>";}
+                    //if (isStaff()){ echo "<tr><td colspan='5' style='align-text: right'>"
+                    //. "<a class='btn' href='updateInventory.php'>Update Inventory</a></td></tr>";}
                     ?>
                 </table>
             </div>

@@ -31,7 +31,10 @@ function get_all_orders(){
         . "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
-        echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";
+        if ($order['status'] == 'shipped')
+            { echo "<tr><td><font style='color:green;'>" . $order['status'] . "</font></td></tr>";}
+            else{echo "<tr><td><font style='color:red;'>" . $order['status'] . "</font></td></tr>";}
+        //echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";
         echo "</tr>";
     }
 }

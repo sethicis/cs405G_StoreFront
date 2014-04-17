@@ -59,12 +59,16 @@ function print_order_status(){
     echo "<div class='col-lg-3'>"
         . "<form action='shiporders.php' method='POST'>"
         . "<table class='table table-condensed'>"
-        . "<tr><th>Order Status</th></tr>"
-        . "<tr><td><font style='color:red;'>" . $order['status'] . "</font></td></tr>"
-        . "<tr><td>"
-        . "<button type='submit' class='btn' name='order' value='" . $orderID . "'>Ship It</button>"
-        . "</td></tr>"
-        . "</table>"
+        . "<tr><th>Order Status</th></tr>";
+        if ($order['status'] == 'shipped')
+            { echo "<tr><td><font style='color:green;'>" . $order['status'] . "</font></td></tr>";}
+            else{
+                echo "<tr><td><font style='color:red;'>" . $order['status'] . "</font></td></tr>"
+                . "<tr><td>"
+                . "<button type='submit' class='btn' name='order' value='" . $orderID . "'>Ship It</button>"
+                . "</td></tr>";
+            }
+        echo "</table>"
         . "</form></div>";
 }
 
