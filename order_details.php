@@ -11,7 +11,7 @@ include 'query.php';
 
 function get_order_items(){
     $orderID = $_GET['order'];
-    $order = get_order_items($orderID);
+    $order = get_ordered_items($orderID);
     $sum = 0;
     while ($row = mysqli_fetch_array($order)){
         echo "<tr>";
