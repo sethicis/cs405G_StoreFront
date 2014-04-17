@@ -18,7 +18,7 @@ function get_customer_orders(){
         echo "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
-        echo "<td>" . $order['status'] . "</td>";
+        echo "<td><font style='color:red'>" . $order['status'] . "</font></td>";
         echo "</tr>";
     }
 }
@@ -31,8 +31,7 @@ function get_all_orders(){
         . "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
-        echo "<td>" . $order['status'] . "</td>";
-        echo "<td><a class='btn' href='shiporder.php?order=" . $order['id'] . "'>Ship Order</a>";
+        echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";
         echo "</tr>";
     }
 }
@@ -51,7 +50,7 @@ function header_row(){
     if ($type == 'customer'){
         echo "<th>Order ID</th><th>Date Ordered</th><th>Status</th>";
     }else{
-        echo "<th>Customer</th><th>Order ID</th><th>Date Ordered</th><th>Status</th><th>Ship it</th>";
+        echo "<th>Customer</th><th>Order ID</th><th>Date Ordered</th><th>Status</th>";
     }
 }
 
