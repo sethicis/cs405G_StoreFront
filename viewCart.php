@@ -18,7 +18,7 @@ function cartItems(){
         "<tr>"
         . "<td>" . $itemInfo['name'] . "</td>"
         . "<td>" . $isn . "</td>"
-        . "<td>" . strval($itemInfo['price']*$qty) . "</td>"
+        . "<td>$" . strval($itemInfo['price']*$qty) . "</td>"
         . "<td><input type='text' size='3' default='" . strval($qty) . "' name='" . $isn . "'></td>"
         . "<td><a href='removeCartItem.php?isn=" . $isn . "'>remove</a></td>"
         . "</tr>";

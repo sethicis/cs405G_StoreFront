@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 
-include 'cart.php';
-include 'query.php';
-include 'users.php';
+include_once 'cart.php';
+include_once 'query.php';
+include_once 'users.php';
 
 $cartItems = get_cart_items();
 
@@ -21,9 +21,11 @@ foreach ($cartItems as $isn => $qty){
     if (get_item_quantity($isn) < $qty){
         $goto = 'viewCart.php?err=' . $isn;
         header("Location: ${goto}");
+        exit;
     }
 }
 
-purchase_item($cartItems);
+purchase_items($cartItems);
 
 header("Location: orders.php?type=customer");
+exit;

@@ -147,7 +147,7 @@ function check_for_mysql_error($con,$err){
     }
 }
 
-function purchase_item($cartItems){
+function purchase_items($cartItems){
     $connection = make_connection();
     
     $orderID = generateOrderID();
