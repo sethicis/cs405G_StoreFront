@@ -5,21 +5,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once 'query.php';
-
 include_once "query.php";
-
-$items = get_all_items();
 
 foreach ($_POST as $isn => $qty){
     if ($isn != 'updateQty'){
-        while ($row = mysqli_fetch_array($items)){
-            if ($row['isn'] === $isn){
-                if ($row['quantity'] != $qty){
-                    update_item($isn, $qty);
-                }
-            }
-        }
+	$qty = intval($qty);
+	$item = get_item_by_isn($isn);
+	if ($item['quantity'] != $qty){
+		update_item($isn,$qty);
+	}
     }
 }
 
