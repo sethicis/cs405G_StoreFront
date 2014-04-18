@@ -296,8 +296,8 @@ function update_item($isn, $quantity){
     
     $isn = mysqli_escape_string($connection, $isn);
     $quantity = mysqli_escape_string($connection, $quantity);
-    $update_item_query = "UPDATE Items"
-            . "SET Items.quantity = ${quantity}, "
+    $update_item_query = "UPDATE Items "
+            . "SET Items.quantity = ${quantity} "
             . "WHERE Items.name = '${isn}';";
     check_for_mysql_error($connection,send_query($connection, $update_item_query));
 }
@@ -340,7 +340,7 @@ function get_all_available_items(){
 function get_all_items(){
     $connection = make_connection();
     
-    $all_items_query = "SELECT * FROM Items ORDER BY name asc";
+    $all_items_query = "SELECT * FROM Items ORDER BY name asc;";
     $result = send_query($connection, $all_items_query);
     if (mysqli_num_rows($result) > 0){
         return $result;
