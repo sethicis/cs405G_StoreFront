@@ -6,11 +6,3 @@
  * and open the template in the editor.
  */
 
-foreach ($_POST as $isn => $qty){
-    if ($isn != 'updateQty'){
-        update_item($isn, $qty);
-    }
-}
-
-header("Location: items.php?edit=no");
-exit;

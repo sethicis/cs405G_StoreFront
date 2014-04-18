@@ -281,19 +281,25 @@ function get_item($name){
     }
 }
 
-function update_item($name, $quantity, $promotion){
+function set_item_promotion($isn, $promo = 0){
+    $connection = make_connection();
+    $isn = mysqli_escape_string($connection, $isn);
+    $promo = mysqli_escape_string($connection, $promo);
+    $set_promo_query = "UPDATE Items "
+            . "SET Items.promotion = ${promo} "
+            . "WHERE Items.isn = '${isn}';";
+    check_for_mysql_error($connection, send_query($connection, $set_promo_query));
+}
+
+function update_item($isn, $quantity){
     $connection = make_connection();
     
-    $name = mysqli_escape_string($connection, $name);
+    $isn = mysqli_escape_string($connection, $isn);
     $quantity = mysqli_escape_string($connection, $quantity);
-    $promotion = mysqli_escape_string($connection, $promotion);
-    
     $update_item_query = "UPDATE Items"
-            . "SET Items.quantity = $quantity, "
-            . "Items.promotion = $promotion"
-            . "WHERE Items.name = '$name';";
-    send_query($connection, $update_item_query);
-    return;
+            . "SET Items.quantity = ${quantity}, "
+            . "WHERE Items.name = '${isn}';";
+    check_for_mysql_error($connection,send_query($connection, $update_item_query));
 }
 
 function lower_item_qty($isn,$quantity){
