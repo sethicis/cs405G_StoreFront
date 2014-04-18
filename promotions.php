@@ -52,9 +52,9 @@ function populateItems(){
 
 function addEditButton(){
     if ($_GET['edit'] == 'yes'){
-        echo "<a class='btn' href='promotions.php?edit=no'>Turn <font style='color:green;'>ON</font> Edit Mode</a>";
+        echo "<a class='btn' href='promotions.php?edit=no'>Turn <font style='color:red;'>OFF</font> Edit Mode</a>";
     }else{
-        echo "<a class='btn' href='promotions.php?edit=yes'>Turn <font style='color:red;'>OFF</font> Edit Mode</a>";
+        echo "<a class='btn' href='promotions.php?edit=yes'>Turn <font style='color:green;'>ON</font> Edit Mode</a>";
     }
 }
 
