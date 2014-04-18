@@ -47,6 +47,18 @@ function orders(){
         echo "<li><a href='orders.php?type=staff'>Orders</a></li>";
     }
 }
+
+function promos(){
+    if (isManager()){
+        echo "<li><a href='promotions.php?edit=no'>Promotions</a></li>";
+    }
+}
+
+function stats(){
+    if (isManager()){
+        echo "<li><a href='statistics.php?time=month'>Statistics</a></li>";
+    }
+}
 ?>
 
 
@@ -68,6 +80,8 @@ function orders(){
         <li><a href="items.php?edit=no">Items</a></li>
         <?php shoppingCart() ?>
         <?php orders() ?>
+        <?php promos() ?>
+        <?php stats() ?>
         <?php login() ?>
         <!--<li><a href="#contact">Contact</a></li>-->
       </ul>

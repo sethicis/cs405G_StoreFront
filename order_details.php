@@ -34,12 +34,12 @@ function get_order_items(){
             echo "<td>"
             . $row['name'] . "</td>";
             echo "<td>" . $row['isn'] . "</td>";
-            echo "<td>\$" . strval($row['price'] - $row['promotion']*$row['price']) . "</td>";
+            echo "<td>\$" . strval($row['price']) . "</td>";
             echo "<td>" . strval($row['oqty']) . "</td>";
             if (isStaff()) { echo "<td>" . strval($row['iqty']) . "</td>"; }
-            echo "<td>\$" . strval(($row['price'] - $row['promotion']*$row['price'])*$row['oqty']) . "</td>";
+            echo "<td>\$" . strval($row['price']*$row['oqty']) . "</td>";
         echo "</tr>";
-        $sum += ($row['price'] - $row['promotion']*$row['price'])*$row['oqty'];
+        $sum += $row['price']*$row['oqty'];
         $count += ($row['oqty']);
     }
     
@@ -72,16 +72,20 @@ function print_order_status(){
         . "</form></div>";
 }
 
+function staffViewHeader(){
+    echo "<div class='row'>"
+        . "<div class='col-lg-9'>"
+            . "<h3>Customer Info</h3>"
+            . "<table class='table table-condensed'>"
+            . "<tr>"
+            . "<th>Email</th><th>First Name</th><th>Last Name</th>"
+            . "<th>Street</th><th>City</th><th>State</th><th>Zipcode</th>"
+            . "</tr>";
+}
+
 function staffView(){
     if (isStaff()){
-        echo "<div class='row'>"
-        . "<div class='col-lg-9'>"
-                . "<h3>Customer Info</h3>"
-                . "<table class='table table-condensed'>"
-                . "<tr>"
-                . "<th>Email</th><th>First Name</th><th>Last Name</th>"
-                . "<th>Street</th><th>City</th><th>State</th><th>Zipcode</th>"
-                . "</tr>";
+        staffViewHeader();
         $customer = get_customer_for_order($_GET['order']);
         echo "<tr>"
         . "<td>" . $customer['email'] . "</td><td>" . $customer['fname'] . "</td>"
