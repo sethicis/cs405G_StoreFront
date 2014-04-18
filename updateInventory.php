@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+include_once 'query.php';
 
 foreach ($_POST as $isn => $qty){
     if ($isn != 'updateQty'){
