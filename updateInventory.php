@@ -6,4 +6,6 @@
  * and open the template in the editor.
  */
 
-echo"debugging..";
+foreach ($_POST as $isn => $qty){
+    echo $isn . " " . $qty;
+}
