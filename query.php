@@ -297,8 +297,8 @@ function update_item($isn, $quantity){
     $isn = mysqli_escape_string($connection, $isn);
     $quantity = mysqli_escape_string($connection, $quantity);
     $update_item_query = "UPDATE Items "
-            . "SET Items.quantity = ${quantity} "
-            . "WHERE Items.name = '${isn}';";
+            . "SET quantity = ${quantity} "
+            . "WHERE isn = '${isn}';";
     check_for_mysql_error($connection,send_query($connection, $update_item_query));
 }
 
