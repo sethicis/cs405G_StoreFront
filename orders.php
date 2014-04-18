@@ -32,8 +32,8 @@ function get_all_orders(){
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
         if ($order['status'] == 'shipped')
-            { echo "<tr><td><font style='color:green;'>" . $order['status'] . "</font></td></tr>";}
-            else{echo "<tr><td><font style='color:red;'>" . $order['status'] . "</font></td></tr>";}
+            { echo "<td><font style='color:green;'>" . $order['status'] . "</font></td>";}
+            else{echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";}
         //echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";
         echo "</tr>";
     }
