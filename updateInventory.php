@@ -5,10 +5,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$items = get_all_items();
 
 foreach ($_POST as $isn => $qty){
     if ($isn != 'updateQty'){
-        update_item($isn, $qty);
+        while ($row = mysqli_fetch_array($items)){
+            if ($row['isn'] === $isn){
+                if ($row['quantity'] != $qty){
+                    update_item($isn, $qty);
+                }
+            }
+        }
     }
 }
 
