@@ -5,6 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+include_once "query.php";
+
 $items = get_all_items();
 
 foreach ($_POST as $isn => $qty){
