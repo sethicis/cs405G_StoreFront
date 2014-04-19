@@ -15,6 +15,8 @@ include_once "users.php";
 function login(){
     if (!isCustomer() && !isStaff()){
         echo "<li><a href='login.php?type=customer&err=no'>Login</a></li>";
+    }else{
+        echo "<li><a href='logoff.php'>Log Off</a></li>";
     }
 }
 
