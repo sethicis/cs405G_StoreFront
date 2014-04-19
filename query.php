@@ -193,12 +193,12 @@ function all_orders(){
 function get_ordered_items($id){
     $connection = make_connection();
     $items_in_order_query = "SELECT "
-            . "i.name,i.price,i.promotion"
+            . "i.name,o.price"
             . ",i.isn,o.quantity AS oqty,i.quantity AS iqty "
             . "FROM "
             . "Items AS i, "
             . "("
-                . "SELECT b.isn,b.quantity "
+                . "SELECT b.isn,b.quantity,b.price "
                 . "FROM Bought AS b "
                 . "WHERE b.id = '${id}') AS o "
             . "WHERE i.isn = o.isn;";
@@ -217,6 +217,67 @@ function set_order_shipped($id){
     check_for_mysql_error($connection, send_query($connection, $set_shipped_query));
     
 }
+//Gets the promotion adjusted price for a given item identified by isn
+function get_item_price($isn){
+    $con = make_connection();
+    $query = "SELECT price, promotion FROM Items WHERE isn = '${isn}';";
+    $result = send_query($con, $query);
+    if (mysqli_num_rows($result) > 0){
+        $tmp = mysqli_fetch_assoc($result);
+        return ($tmp['price'] - ($tmp['price']*$tmp['promotion']));
+    }
+}
+
+function get_items_bought_in_last_year(){
+    $con = make_connection();
+    $query = "SELECT distinct(Items.isn), Items.name, sum(b.quantity) AS qty "
+            . "FROM Items, "
+            . "(SELECT b.quantity AS quantity, b.isn AS isn "
+            . "FROM Bought as b, Orders AS o "
+            . "WHERE o.id = b.id AND o.date >= DATE_SUB(CURDATE(), INTERVAL 356 DAY)"
+            . ") AS b "
+            . "WHERE Items.isn = b.isn GROUP by isn;";
+    $result = send_query($con, $query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
+}
+
+function get_items_bought_in_last_month(){
+    $con = make_connection();
+    $query = "SELECT distinct(Items.isn), Items.name, sum(b.quantity) AS qty "
+            . "FROM Items, "
+            . "(SELECT b.quantity AS quantity, b.isn AS isn "
+            . "FROM Bought as b, Orders AS o "
+            . "WHERE o.id = b.id AND o.date >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)"
+            . ") AS b "
+            . "WHERE Items.isn = b.isn GROUP by isn;";
+    $result = send_query($con, $query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
+}
+
+function get_items_bought_in_last_week(){
+    $con = make_connection();
+    $query = "SELECT distinct(Items.isn), Items.name, sum(b.quantity) AS qty "
+            . "FROM Items, "
+            . "(SELECT b.quantity AS quantity, b.isn AS isn "
+            . "FROM Bought as b, Orders AS o "
+            . "WHERE o.id = b.id AND o.date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)"
+            . ") AS b "
+            . "WHERE Items.isn = b.isn GROUP by isn;";
+    $result = send_query($con, $query);
+    if (mysqli_num_rows($result) > 0){
+        return $result;
+    }else{
+        return null;
+    }
+}
 
 function purchase_items($cartItems){
     $connection = make_connection();
@@ -227,7 +288,8 @@ function purchase_items($cartItems){
     $newPurchaseQuery = "INSERT INTO Purchased VALUE ('" . logged_in_user() . "','${orderID}');";
     check_for_mysql_error($connection, send_query($connection, $newPurchaseQuery));
     foreach ($cartItems as $isn => $qty){
-        $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}'," . strval($qty) . ");";
+        $itemPrice = get_item_price($isn);
+        $newBoughtQuery = "INSERT INTO Bought VALUE ('${isn}','${orderID}'," . strval($qty) . ", ${itemPrice});";
         check_for_mysql_error($connection, send_query($connection, $newBoughtQuery));
         remove_item_from_cart($isn);
     }
