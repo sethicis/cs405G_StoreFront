@@ -7,6 +7,8 @@
  */
 
 include_once "header.php";
+include "item-ops.php";
+include_once "users.php";
 
 function addUpdateBtn($isn = null){
     if ($_GET['edit'] == 'yes'){
@@ -18,33 +20,31 @@ function addPromo($promo,$isn){
     if ($_GET['edit'] == 'yes'){
         echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
     }else{
-        echo "<td>" . strval($qty) . "</td>";
+        echo "<td>" . strval($promo) . "</td>";
     }
 }
 
 function displayItems($items){
     while ($item = mysqli_fetch_array($items)){
-        echo "<tr>"
-        . "<td><a href='item.php?isn=${item['isn']}&err=0'>" . $item['name'] . "</a></td>";
-        if (($item['promotion']) > 0){
-            echo "<td>";promoValue($item); echo "</td>";
-            echo "<td><font style='color:green'>" . strval(($item['promotion']*100)) . "% off!</font></td>";
+        echo "<tr>";
+        echo "<td>" . $item['name'] . "</td>";
+        echo "<td>";
+        if ($item['promotion'] > 0){
+            promoValue($item);
+        }else{
+            echo strval($item['price']);
         }
-        else{
-            echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
-        }
-        echo "<td>" . $item['isn'] . "</td>";
-        if (isManager()){
-            addPromo($item['promotion'],$item['isn']);
-            addUpdateBtn();
-        }
+        echo "</td>";
+        echo "<td>" . $item['isn'] . "</td><td>" . $item['quantity'] . "</td>";
+        addPromo($item['promotion'],$item['isn']);
+        addUpdateBtn();
         echo "</tr>";
     }
 }
 
 function populateItems(){
     $items = null;
-    if ((logged_in_user() != null) and isStaff()){
+    if ((logged_in_user() != null) and isManager()){
         $items = get_all_items();
     }
     displayItems($items);
@@ -82,8 +82,9 @@ function tableheader(){
                         <th>Name</th>
                         <th>Price</th>
                         <th>ISN</th>
+                        <th>Quantity</th>
                         <th>Promotion</th>
-                        <?php if (($_GET['edit'] == 'yes') and isStaff()) { echo "<th>Update</th>"; } ?>
+                        <?php if (($_GET['edit'] == 'yes') and isManager()) { echo "<th>Update</th>"; } ?>
                     </tr>
                     <?php
                     populateItems();

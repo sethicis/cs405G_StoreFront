@@ -13,7 +13,7 @@ include_once "users.php";
  * If no one is logged in, create the generic login link
  */
 function login(){
-    if (!isCustomer() && !isStaff()){
+    if (!isCustomer() && !isStaff() && !isManager()){
         echo "<li><a href='login.php?type=customer&err=no'>Login</a></li>";
     }else{
         echo "<li><a href='logoff.php'>Log Off</a></li>";
