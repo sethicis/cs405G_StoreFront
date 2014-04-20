@@ -6,3 +6,13 @@
  * and open the template in the editor.
  */
 
+include 'query.php';
+
+foreach ($_POST as $isn => $promo) {
+    if ($isn != 'update' and $isn != 'stuff'){
+        set_item_promotion($isn, $promo);
+    }
+}
+
+header("Location: promotions.php?edit=no");
+exit;
