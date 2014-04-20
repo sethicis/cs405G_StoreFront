@@ -18,7 +18,8 @@ function addUpdateBtn($isn = null){
 
 function addPromo($promo,$isn){
     if ($_GET['edit'] == 'yes'){
-        echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
+        //echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
+        echo "<td><input type='text' size='3' id='${isn}' name='" . "stuff" . "' value='" . strval($promo) . "'></td>";
     }else{
         echo "<td>" . strval($promo) . "</td>";
     }
