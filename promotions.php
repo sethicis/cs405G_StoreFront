@@ -19,7 +19,8 @@ function addUpdateBtn($isn = null){
 function addPromo($promo,$isn){
     if ($_GET['edit'] == 'yes'){
         //echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
-        echo "<td><input type='text' size='3' id='${isn}' name='" . "stuff" . "' value='" . strval($promo) . "'></td>";
+        echo "<td><input type='text' size='3' id='${isn}' name='" . "stuff" . "' value='" . strval($promo) . "'"
+                . "onchange='updated(${isn})'></td>";
     }else{
         echo "<td>" . strval($promo) . "</td>";
     }
@@ -95,6 +96,12 @@ function tableheader(){
             </div>
         </div>
     </div>
+    <script>
+        function updated(isn){
+            var x = document.getElementById(isn);
+            x.name = isn;
+        }
+    </script>
     <?php include 'footer.php'; ?>
 </body>
 </html>
