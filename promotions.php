@@ -98,7 +98,6 @@ function tableheader(){
     </div>
     <script>
         function updated(isn){
-            console.log("isn value: "+isn);
             var x = document.getElementById(isn);
             x.name = isn;
         }
