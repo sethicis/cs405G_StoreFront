@@ -8,6 +8,7 @@
 
 include 'header.php';
 include 'query.php';
+include 'users.php';
 
 function populateItems(){
     $time = $_GET['time'];
@@ -30,7 +31,7 @@ function addTimeButtons(){
 }
 
 function tableheader(){
-    if (isStaff){
+    if (isManager()){
         $time = $_GET['time'];
         echo "<thead>";
         echo "<tr>";
