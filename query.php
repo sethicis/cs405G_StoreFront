@@ -129,7 +129,7 @@ function chk_mgt($id){
     $connection = make_connection();
     $id = mysqli_escape_string($connection, $id);
     
-    $query = "SELECT * FROM Staff WHERE sid ='$id' AND manager = 1;";
+    $query = "SELECT * FROM Staff WHERE sid ='${id}' AND management = 1;";
     $result = send_query($connection, $query);
     if (mysqli_num_rows($result) > 0){
         return TRUE;
