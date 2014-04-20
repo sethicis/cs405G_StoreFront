@@ -101,6 +101,12 @@ function allfields(){
                             <input type="text" placeholder="zip" name="zip">
                         </div>
                     </div>
+                    <div class=''control-group'>
+                         <label class='control-label'>Register</label>
+                        <div class='controls'>
+                            <button type='submit' class='btn' name='submit'>Register</button>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
                 
