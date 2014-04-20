@@ -20,7 +20,7 @@ function addPromo($promo,$isn){
     if ($_GET['edit'] == 'yes'){
         //echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
         echo "<td><input type='text' size='3' id='${isn}' name='" . "stuff" . "' value='" . strval($promo) . "'"
-                . "onkeypress='updated('${isn}')'></td>";
+                . "onkeypres=updated('${isn}')></td>";
     }else{
         echo "<td>" . strval($promo) . "</td>";
     }
