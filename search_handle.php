@@ -1,7 +1,6 @@
 <?php
 
 include 'header.php';
-include 'items.php';
 include_once 'query.php';
 
 /* 
@@ -10,7 +9,6 @@ include_once 'query.php';
  * and open the template in the editor.
  */
 
-function search_type(){
     if (isset($_POST['term']))
 	//if (TRUE)
     {
@@ -22,6 +20,7 @@ function search_type(){
         $item = get_item($term);
         if ($item != NULL){
             header("Location: item.php?isn=" . $item['isn'] . "&error=0");
+		exit;
         }else{
             //TODO: Handle search term with no hits
         }
@@ -29,7 +28,7 @@ function search_type(){
     else
     {
         //Browse all items
-        $items = get_all_items();
+        //$items = get_all_items();
 	head('Browse Items');
 	echo "<body>";
         include 'toolbar.php';
@@ -37,7 +36,6 @@ function search_type(){
         include 'footer.php';
 	echo "</body>";
     }
-}
 
-search_type(); //Get the appropriate item
 
+?>

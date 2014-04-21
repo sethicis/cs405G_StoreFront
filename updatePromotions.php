@@ -13,6 +13,6 @@ foreach ($_POST as $isn => $promo) {
         set_item_promotion($isn, $promo);
     }
 }
-
-header("Location: promotions.php?edit=no");
+//Debugging
+//header("Location: promotions.php?edit=no");
 exit;
