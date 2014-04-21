@@ -26,7 +26,7 @@ function populateItems(){
     if ($time === 'week'){
         $items = get_items_bought_in_last_week();
     }
-    else if ($items === 'month'){
+    else if ($time === 'month'){
         $items = get_items_bought_in_last_month();
     }else{
         $items = get_items_bought_in_last_year();
@@ -54,7 +54,7 @@ function options(){
     echo "<div class='row'>";
         echo "<div class='col-lg-12'>";
             echo "<table class='table table-condensed'>"
-                . "<thead><tr><td colspan='3'>Sale Statistics Over The Past</td></tr></thead>";
+                . "<thead><tr><td colspan='3'>Select Sale Interval:</td></tr></thead>";
             echo "<tr>";
             addTimeButtons();
             echo "</tr>"
