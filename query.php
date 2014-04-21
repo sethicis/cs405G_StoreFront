@@ -47,7 +47,7 @@ function add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip){
     $state = mysqli_escape_string($connection, $state);
     $zip = mysqli_escape_string($connection, $zip);
     $add_customer_query = "INSERT INTO Customers "
-            . "(email,password,fname,lname,street,city,state,zip) "
+            . "(email,password,fname,lname,street,city,state,zipcode) "
             . "VALUE "
             . "('${username}','${pass1}','${fname}','${lname}','${street}','${city}','${state}','${zip}');";
     check_for_mysql_error($connection, send_query($connection, $add_customer_query));
