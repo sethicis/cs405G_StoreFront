@@ -270,7 +270,7 @@ function get_items_bought_in_last_week(){
             . "FROM Bought as b, Orders AS o "
             . "WHERE o.id = b.id AND o.date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)"
             . ") AS b "
-            . "WHERE Items.isn = b.isn GROUP by isn;";
+            . "WHERE Items.isn = b.isn GROUP by isn ORDER BY Items.name asc;";
     $result = send_query($con, $query);
     if (mysqli_num_rows($result) > 0){
         return $result;
