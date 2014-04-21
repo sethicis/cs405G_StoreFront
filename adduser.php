@@ -36,17 +36,17 @@ $goto;
 //}
 
 if (!customer_exists($username)){
-    if (add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip)){
-        
-        $goto = 'login.php?type=customer&err=no';
-        header("Location: ${goto}");
-        exit;
-    }
+    add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip);
+}else{
+    $goto = 'register.php?err=user';
+    header("Location: ${goto}");
+    exit;
     //if the add_customer funciton returns false then something has happened with
     //  the query insertion.
     //  See query log for more information
 }
-$goto = 'register.php?err=user';
+
+$goto = 'login.php?type=customer&err=no';
 
 header("Location: ${goto}");
 exit;
