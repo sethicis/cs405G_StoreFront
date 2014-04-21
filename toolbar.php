@@ -33,7 +33,7 @@ function greet(){
 //Does not require the user to be logged in, but cannot be viewed
 //  as a staff member.
 function shoppingCart(){
-    if (!isStaff()){
+    if (!isStaff() and !  isManager()){
         echo "<li><a href='viewCart.php'>Cart " . strval(cartCount()) . "</a></li>";
     }
 }
@@ -42,7 +42,7 @@ function shoppingCart(){
  * links to either all orders, or just the particular customer's orders.
  */
 function orders(){
-    if (isCustomer()){
+    if (isCustomer() or isManager()){
         echo "<li><a href='orders.php?type=customer'>Orders</a></li>";
     }
     if (isStaff()){
