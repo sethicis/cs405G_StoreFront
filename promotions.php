@@ -77,7 +77,7 @@ function tableheader(){
     <div class='container'>
         <div class='row'>
             <div class='col-lg-12'>
-                <form action='updatePromotions.php' method='POST'>
+                <form action='updatePromotions.php' method='POST' id='promoValue'>
                 <table class='table table-hover'>
                     <?php tableheader() ?>
                     <tr>
