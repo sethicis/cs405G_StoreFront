@@ -36,7 +36,7 @@ function displayItems($items){
             echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
         }
         echo "<td>" . $item['isn'] . "</td>";
-        if (isStaff()){
+        if (isStaff() or isManager()){
             addQty($item['quantity'],$item['isn']);
             addUpdateBtn();
         }

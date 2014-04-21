@@ -42,10 +42,10 @@ function shoppingCart(){
  * links to either all orders, or just the particular customer's orders.
  */
 function orders(){
-    if (isCustomer() or isManager()){
+    if (isCustomer()){
         echo "<li><a href='orders.php?type=customer'>Orders</a></li>";
     }
-    if (isStaff()){
+    if (isStaff() or isManager()){
         echo "<li><a href='orders.php?type=staff'>Orders</a></li>";
     }
 }
