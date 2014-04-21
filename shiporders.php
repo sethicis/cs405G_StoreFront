@@ -16,7 +16,7 @@ $goto = "";
 $count = 0;
 
 while ($row = mysqli_fetch_array($order)){
-    if ($row['iqty'] > get_item_quantity($row['isn'])){
+    if ($row['oqty'] > $row['iqty']){
         $goto = $goto . "&err" . strval($count) . "=" . $row['isn'];
         $count++;
     }

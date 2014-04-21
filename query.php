@@ -393,8 +393,7 @@ function lower_item_qty($isn,$quantity){
     $new_Item_count_sql = "UPDATE Items"
             . "SET Items.quantity = ${newCount}"
             . "WHERE Items.isn = '${isn}';";
-    send_query($connection, $new_Item_count_sql);
-    return;
+    check_for_mysql_error($connection,send_query($connection, $new_Item_count_sql));
 }
 
 function increase_item_qty($name,$quantity){
