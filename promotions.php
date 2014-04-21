@@ -20,7 +20,7 @@ function addPromo($promo,$isn){
     if ($_GET['edit'] == 'yes'){
         //echo "<td><input type='text' size='3' name='" . $isn . "' value='" . strval($promo) . "'></td>";
         echo "<td><input type='text' size='3' id='${isn}' name='" . "stuff" . "' value='" . strval($promo) . "'"
-                . "onkeypress=\"updated(this.id)\"></td>";
+                . "onkeydown=\"updated(this.id)\"></td>";
     }else{
         echo "<td>" . strval($promo) . "</td>";
     }
@@ -105,7 +105,7 @@ function tableheader(){
                     input.value = '0.0';
                 }
             })
-        })
+        });
         function updated(isn){
             var x = document.getElementById(isn);
             x.name = isn;
