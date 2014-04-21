@@ -34,7 +34,25 @@ function log_query($sql){
     //echo $sql;
     error_log($sql, 3, "/mounts/u-zon-d2/ugrad/jkbl225/HTML/cs405-store/script_errors.log");
 }
- 
+
+function add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip){
+    $connection = make_connection();
+    
+    $username = mysqli_escape_string($connection, $username);
+    $pass1 = mysqli_escape_string($connection, $pass1);
+    $fname = mysqli_escape_string($connection, $fname);
+    $lname = mysqli_escape_string($connection, $lname);
+    $street = mysqli_escape_string($connection, $street);
+    $city = mysqli_escape_string($connection, $city);
+    $state = mysqli_escape_string($connection, $state);
+    $zip = mysqli_escape_string($connection, $zip);
+    $add_customer_query = "INSERT INTO Customers "
+            . "(email,password,fname,lname,street,city,state,zip) "
+            . "VALUE "
+            . "('${username}','${pass1}','${fname}','${lname}','${street}','${city}','${state}','${zip}');";
+    check_for_mysql_error($connection, send_query($connection, $add_customer_query));
+}
+
 function send_query($connection,$sql){
     if($connection){
         log_query($sql);
