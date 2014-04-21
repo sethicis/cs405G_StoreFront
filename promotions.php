@@ -71,7 +71,7 @@ function tableheader(){
 
 ?>
 
-<?php head("Items"); ?>
+<?php head("Sale Promotions"); ?>
 <body>
     <?php include "toolbar.php"; ?>
     <div class='container'>
