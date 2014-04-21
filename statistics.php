@@ -37,7 +37,7 @@ function populateItems(){
 function addTimeButtons(){
     echo "<td><a class='btn' href='statistics.php?time=week'>Week</a></td>"
         . "<td><a class='btn' href='statistics.php?time=month'>Month</a></td>"
-        . "<a class='btn' href='statistics.php?time=year'>Year</a></td>";
+        . "<td><a class='btn' href='statistics.php?time=year'>Year</a></td>";
 }
 
 function tableheader(){
@@ -45,7 +45,7 @@ function tableheader(){
         $time = $_GET['time'];
         echo "<thead>";
         echo "<tr>";
-        echo "<td colspan='3'><h5>Items Purchased in the Past ${time}</h5></td>"
+        echo "<td colspan='3'><h4>Items Purchased in last ${time}</h4></td>"
         . "</tr></thead>";
     }
 }
