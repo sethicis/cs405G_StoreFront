@@ -7,8 +7,18 @@
  */
 
 include 'header.php';
-include 'query.php';
-include 'users.php';
+include_once 'query.php';
+include_once 'users.php';
+
+function displayItems($items){
+    while ($row = mysqli_fetch_array($items)){
+        echo "<tr>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['qty'] . "</td>";
+        echo "<td>" . $row['isn'] . "</td>";
+        echo "</tr>";
+    }
+}
 
 function populateItems(){
     $time = $_GET['time'];
@@ -66,7 +76,7 @@ head("Item Sale Statistics");
                     <?php tableheader() ?>
                     <tr>
                         <th>Name</th>
-                        <th>Quantity</th>
+                        <th>Number Sold</th>
                         <th>ISN</th>
                     </tr>
                     <?php
