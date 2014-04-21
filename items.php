@@ -18,7 +18,8 @@ function addUpdateBtn($isn = null){
 
 function addQty($qty,$isn){
     if ($_GET['edit'] == 'yes'){
-        echo "<td><input type='text' size='4' name='" . $isn . "' value='" . strval($qty) . "'></td>";
+        echo "<td><input type='text' size='3' id='" . $isn . "' name='stuff' "
+                . "value='" . strval($qty) . "' onkeydown='updated(this.id)'></td>";
     }else{
         echo "<td>" . strval($qty) . "</td>";
     }
@@ -85,7 +86,7 @@ function tableheader(){
     <div class='container'>
         <div class='row'>
             <div class='col-lg-12'>
-                <form action='updateInventory.php' method='POST'>
+                <form action='updateInventory.php' method='POST' id='itemValues'>
                 <table class='table table-hover'>
                     <?php tableheader() ?>
                     <tr>
@@ -105,5 +106,19 @@ function tableheader(){
         </div>
     </div>
     <?php include 'footer.php'; ?>
+    <script>
+        $('#itemValues').submit(function() {
+            $("form#promoValue :input[type=text]").each(function() {
+                var input = $(this);
+                if ((input.name !== 'stuff') && (input.value === '0')){
+                    input.value = 0;
+                }
+            })
+        });
+        function updated(isn){
+            var x = document.getElementById(isn);
+            x.name = isn;
+        }
+    </script>
 </body>
 </html>
