@@ -77,7 +77,7 @@ function tableheader(){
     <div class='container'>
         <div class='row'>
             <div class='col-lg-12'>
-                <form action='updatePromotions.php' method='POST' id='promoValue'>
+                <form id='promoValue' action='updatePromotions.php' method='POST'>
                 <table class='table table-hover'>
                     <?php tableheader() ?>
                     <tr>
@@ -97,6 +97,14 @@ function tableheader(){
         </div>
     </div>
     <script>
+        $('#promoValue').submit(function() {
+            $("form#promoValue :input[type=text]").each(function() {
+                var input = $(this);
+                if ((input.name !== 'stuff') && (input.value === '0')){
+                    input.value = '0.0';
+                }
+            })
+        })
         function updated(isn){
             var x = document.getElementById(isn);
             x.name = isn;
