@@ -96,6 +96,7 @@ function tableheader(){
             </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
     <script>
         $('#promoValue').submit(function() {
             $("form#promoValue :input[type=text]").each(function() {
@@ -110,6 +111,5 @@ function tableheader(){
             x.name = isn;
         }
     </script>
-    <?php include 'footer.php'; ?>
 </body>
 </html>
