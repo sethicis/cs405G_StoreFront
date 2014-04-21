@@ -8,12 +8,9 @@
 include_once "query.php";
 
 foreach ($_POST as $isn => $qty){
-    if ($isn != 'updateQty'){
+    if (($isn !== 'stuff') and ($isn !== 'update')){
 	$qty = intval($qty);
-	$item = get_item_by_isn($isn);
-	if ($item['quantity'] != $qty){
-		update_item($isn,$qty);
-	}
+        update_item($isn,$qty);
     }
 }
 
