@@ -105,6 +105,7 @@ head("Order Details");
 <body>
     <?php include 'toolbar.php'; ?>
     <div class='container'>
+        <?php processErr(); ?>
         <div class='row'>
             <div class='col-lg-12'>
                 <?php tableTitle() ?>
