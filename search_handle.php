@@ -2,7 +2,6 @@
 
 include 'header.php';
 include 'items.php';
-include 'operations.php';
 include_once 'query.php';
 
 /* 
@@ -12,7 +11,7 @@ include_once 'query.php';
  */
 
 function search_type(){
-    if (isset($_POST['search']))
+    if (isset($_POST['term']))
 	//if (TRUE)
     {
         //Search for term
