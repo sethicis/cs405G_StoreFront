@@ -20,21 +20,6 @@ $lname = $_POST['lname'];
 
 $goto;
 
-//if (!customer_exists($username)){
-//    if ($pass1 == $pass2){
-//        //passwords match
-//        //Check that all fields were filled
-//        if (($pass1 != "") and ($street != "") and ($city != "") 
-//                and ($zip != "") and ($state != "")
-//                and ($fname != "") and ($lname != "")){
-//            if (add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip)){
-//                
-//                $goto = 'login.php?type=customer&err=no';
-//            }
-//        }
-//    }
-//}
-
 if (!customer_exists($username)){
     add_customer($username,$pass1,$fname,$lname,$street,$city,$state,$zip);
 }else{
