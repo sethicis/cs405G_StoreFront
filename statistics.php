@@ -54,7 +54,7 @@ function options(){
     echo "<div class='row'>";
         echo "<div class='col-lg-12'>";
             echo "<table class='table table-condensed'>"
-                . "<thead><tr><td colspan='3'>Select Sale Interval:</td></tr></thead>";
+                . "<thead><tr><td colspan='3'><h4>Select Sale Interval:</h4></td></tr></thead>";
             echo "<tr>";
             addTimeButtons();
             echo "</tr>"
