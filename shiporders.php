@@ -11,26 +11,28 @@ include 'query.php';
 $orderID = $_POST['order'];
 
 $order = get_ordered_items($orderID);
-if ($order === null) {echo "Null returned";}
-//$goto = "";
-//$count = 0;
-//
-//while ($row = mysqli_fetch_array($order)){
-//    if ($row['quantity'] > get_item_quantity($row['isn'])){
-//        $goto = $goto . "&err" . strval($count) . "=" . $row['isn'];
-//        $count++;
-//    }
-//}
-//
-//if ($count > 0){
-//    $goto = "order_details.php?order=". $orderID . "&errcount=" . strval($count) . $goto;
-//    header("Location: ${goto}");
-//    exit;
-//}else{
-//    while ($row = mysqli_fetch_array($order)){
-//        lower_item_qty($row['isn'], $row['quantity']);
-//    }
-//    set_order_shipped($orderID);
-//    header("Location: order_details.php?order=${orderID}&errcount=0");
-//    exit;
-//}
+//if ($order === null) {echo "Null returned";}
+$goto = "";
+$count = 0;
+
+while ($row = mysqli_fetch_array($order)){
+    if ($row['iqty'] > get_item_quantity($row['isn'])){
+        $goto = $goto . "&err" . strval($count) . "=" . $row['isn'];
+        $count++;
+    }
+}
+
+(mysqli_data_seek($order, 0));
+
+if ($count > 0){
+    $goto = "order_details.php?order=". $orderID . "&errcount=" . strval($count) . $goto;
+    header("Location: ${goto}");
+    exit;
+}else{
+    while ($row = mysqli_fetch_array($order)){
+        lower_item_qty($row['isn'], $row['oqty']);
+    }
+    set_order_shipped($orderID);
+    header("Location: order_details.php?order=${orderID}&errcount=0");
+    exit;
+}
