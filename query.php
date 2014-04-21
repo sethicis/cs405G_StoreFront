@@ -391,7 +391,7 @@ function lower_item_qty($isn,$quantity){
     $newCount = $curCount - $quantity;
     
     $new_Item_count_sql = "UPDATE Items"
-            . "SET Items.quantity = ${newCount}"
+            . "SET Items.quantity = ${newCount} "
             . " WHERE Items.isn = '${isn}';";
     check_for_mysql_error($connection,send_query($connection, $new_Item_count_sql));
 }
