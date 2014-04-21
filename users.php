@@ -19,15 +19,15 @@ session_start();
 function isCustomer(){
     if (isset($_SESSION[USERID])){
         if ($_SESSION[USERTYPE] == cTYPE)
-            return TRUE;
+        {return TRUE;}
     }
     return FALSE;
 }
 
 function isStaff(){
     if (isset($_SESSION[USERID])){
-        if ($_SESSION[USERTYPE] == sTYPE)
-            return TRUE;
+        if (($_SESSION[USERTYPE] == sTYPE) or ($_SESSION[USERTYPE] == mTYPE))
+        {return TRUE;}
     }
     return FALSE;
 }
@@ -37,7 +37,7 @@ function isStaff(){
 function isManager(){
     if (isset($_SESSION[USERID])){
         if ($_SESSION[USERTYPE] == mTYPE)
-            return TRUE;
+        {return TRUE;}
     }
     return FALSE;
 }
