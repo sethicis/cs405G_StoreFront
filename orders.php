@@ -57,6 +57,21 @@ function header_row(){
     }
 }
 
+function tableName(){
+    if (isCustomer()){
+        echo "<thead>
+                    <tr>
+                        <td><h4>Your Orders</h4></td>
+                    </tr>
+              </thead>";
+    }else{
+        echo "<thead>"
+            . "<tr>"
+                . "<td><h4>All Orders</h4></td>"
+            . "</tr>"
+        . "</thead>";
+    }
+}
 head("Orders");
 ?>
 
@@ -66,6 +81,7 @@ head("Orders");
         <div class='row'>
             <div class='col-lg-12'>
                 <table class='table table-striped'>
+                    <?php tableName() ?>
                     <tr>
                         <?php header_row() ?>
                     </tr>
