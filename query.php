@@ -348,7 +348,6 @@ function get_item_by_isn($isn){
 
 function get_item($name){
     $connection = make_connection();
-	echo "searching : " . $name;
     $name = mysqli_escape_string($connection, $name);
     
     $item_query = "SELECT * FROM Items WHERE name = '" . $name . "';";

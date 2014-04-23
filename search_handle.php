@@ -9,6 +9,22 @@ include_once 'query.php';
  * and open the template in the editor.
  */
 
+function notFound($term){
+        head('Search Item not Found');
+        echo "<body>";
+        include 'toolbar.php';
+        echo "<div class='container'>";
+        echo "<div class='row'>"
+        . "<div class='col-lg-12'>"
+                . "<h2>Item: " . $term . "not found. :(</h2>";
+        echo "</div>"
+            . "</div>"
+            . "</div>";
+        include 'footer.php';
+        echo "</body>";
+        echo "</html>";
+}
+
 if (isset($_POST['term']))
 {
     //Search for term
@@ -20,26 +36,11 @@ if (isset($_POST['term']))
         header("Location: item.php?isn=" . $item['isn'] . "&error=0");
         exit;
     }else{
-        head('Search Item not Found');
-        echo "<body>";
-        include 'toolbar.php';
-        echo "<p>Blank Page...</p>";
-        include 'footer.php';
-        echo "</body>";
-        echo "</html>";
+        notFound($term);
     }
-}
-else
-{
+}else{
     //Browse all items
-    //$items = get_all_items();
-    head('Search Item not found');
-    echo "<body>";
-    include 'toolbar.php';
-    echo "<p>Blank Page...</p>";
-    include 'footer.php';
-    echo "</body>";
-    echo "</html>";
+    notFound($term);
 }
 
 ?>
