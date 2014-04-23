@@ -16,7 +16,7 @@ function notFound($term){
         echo "<div class='container'>";
         echo "<div class='row'>"
         . "<div class='col-lg-12'>"
-                . "<h2>Item: " . $term . " was not found.  :-(</h2>";
+                . "<h2>Item: '" . $term . "' was not found.  :-(</h2>";
         echo "</div>"
             . "</div>"
             . "</div>";
