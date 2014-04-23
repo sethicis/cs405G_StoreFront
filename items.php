@@ -31,10 +31,10 @@ function displayItems($items){
         . "<td><a href='item.php?isn=${item['isn']}&err=0'>" . $item['name'] . "</a></td>";
         if (($item['promotion']) > 0){
             echo "<td>";promoValue($item); echo "</td>";
-            echo "<td><font style='color:green'>" . strval(number_format((float)($item['promotion']*100),2,'.','')) . "% off!</font></td>";
+            echo "<td><font style='color:green'>" . number_format((float)($item['promotion']*100),2,'.','') . "% off!</font></td>";
         }
         else{
-            echo "<td>$" . strval($item['price']) . "</td>". "<td></td>"; //No promotion
+            echo "<td>$" . number_format((float)$item['price'], 2) . "</td>". "<td></td>"; //No promotion
         }
         echo "<td>" . $item['isn'] . "</td>";
         if (isStaff() or isManager()){
