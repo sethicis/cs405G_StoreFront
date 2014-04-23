@@ -25,12 +25,21 @@ function cartItems(){
     }
 }
 
+function titleRow(){
+    echo "<div class='row'>";
+    echo "<div class='col-lg-12'>";
+    echo "<h3>Cart</h3>";
+    echo "</div>";
+    echo "</div>";
+}
+
 head("Shopping Cart");
 ?>
 
 <body>
     <?php include 'toolbar.php'; ?>
     <div class='container'>
+        <?php titleRow(); ?>
         <div class='row'>
             <div class='col-lg-9'>
                 <form class='form-inline' action='updateCart.php' method='POST'>
