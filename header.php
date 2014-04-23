@@ -7,19 +7,6 @@
  */
 
 function head($title){
-    /*echo '
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <title>' . $title . '</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    
-        <!-- Le styles -->
-        <link rel="stylesheet" type="text/css" href="index.css">
-    </head>';*/
     echo "
     <!DOCTYPE html>
     <html lang=\"en\">
@@ -43,21 +30,8 @@ function head($title){
             } 
     </style>
     "
-    //<!-- Custom styles for this template -->
-    //<link href=\"starter-template.css\" rel=\"stylesheet\">
-    . "
-    
-  </head>";
+    . "</head>";
     error_reporting(E_ALL);
-
-    /*<div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->*/
 
 }
 

@@ -9,8 +9,6 @@
 function promoValue($item){
    //return $price - ($price * $promo);
    $price = $item['price'] - ($item['price'] * $item['promotion']);
-   echo "<del style='color:red'>$" . strval($item['price']) . 
-           "</del>&nbsp $" . $price; /*. "<td><font style='color:green'>" . 
-           strval(($item['promotion']*100)) . "% off!</font></td>";*/
-   return;
+   echo "<del style='color:red'>$" . number_format((float)$item['price'],2) . 
+           "</del>&nbsp $" . number_format((float)$price,2);
 }

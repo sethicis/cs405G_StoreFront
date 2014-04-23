@@ -396,14 +396,6 @@ function lower_item_qty($isn,$quantity){
     check_for_mysql_error($connection,send_query($connection, $new_Item_count_sql));
 }
 
-function increase_item_qty($name,$quantity){
-    //TODO:
-    //I'm not sure if this function needs to be implemented
-    //or not.  There may not be a need for an increase
-    //item quantity function. So I'll just leave this here
-    //stubbed.
-}
-
 function get_all_available_items(){
     $connection = make_connection();
     
