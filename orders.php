@@ -10,6 +10,12 @@ include "header.php";
 include_once "users.php";
 include_once "query.php";
 
+function printOrderStatus($status){
+    if ($status == 'shipped')
+            { echo "<td><font style='color:green;'>" . $status . "</font></td>";}
+            else{echo "<td><font style='color:red;'>" . $status . "</font></td>";}
+}
+
 function get_customer_orders(){
     $user = logged_in_user();
     $customer_orders = customer_orders($user);
@@ -18,7 +24,7 @@ function get_customer_orders(){
         echo "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
-        echo "<td><font style='color:red'>" . $order['status'] . "</font></td>";
+        printOrderStatus($order['status']);
         echo "</tr>";
     }
 }
@@ -31,9 +37,7 @@ function get_all_orders(){
         . "<td><a href='order_details.php?order=" . $order['id'] . "&errcount=0'>"
                 . $order['id'] . "</a></td>";
         echo "<td>" . $order['date'] . "</td>";
-        if ($order['status'] == 'shipped')
-            { echo "<td><font style='color:green;'>" . $order['status'] . "</font></td>";}
-            else{echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";}
+        printOrderStatus($order['status']);
         //echo "<td><font style='color:red;'>" . $order['status'] . "</font></td>";
         echo "</tr>";
     }
